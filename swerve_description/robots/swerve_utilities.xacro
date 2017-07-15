@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+
+<!-- 
+XACRO file for constants and modeling macros
+Author: Frederick Wachter - wachterfreddy@gmail.com
+Created: 2017-07-15
+-->
+
+<robot name="swerve" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Common geometry properties -->
+  <xacro:property name="chassis_geometry">
+    <geometry>
+      <mesh filename="package://swerve_description/meshes/chassis.stl" />
+    </geometry>
+  </xacro:property>
+
+  <xacro:property name="swivel_geometry">
+    <geometry>
+      <mesh filename="package://swerve_description/meshes/swivel.stl" />
+    </geometry>
+  </xacro:property>
+
+  <xacro:property name="wheel_geometry">
+    <geometry>
+      <mesh filename="package://swerve_description/meshes/wheel.stl" />
+    </geometry>
+  </xacro:property>
+
+  <!-- Color properties -->
+  <xacro:property name="color_red">
+    <material name="">
+      <color rgba="1 0 0 1" />
+    </material>
+  </xacro:property>
+
+  <xacro:property name="color_green">
+    <material name="">
+      <color rgba="0 1 0 1" />
+    </material>
+  </xacro:property>
+
+  <xacro:property name="color_blue">
+    <material name="">
+      <color rgba="0 0 1 1" />
+    </material>
+  </xacro:property>
+
+  <!-- Common visual and collision properties -->
+  <xacro:property name="chassis_visual_collision">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <xacro:insert_block name="chassis_geometry" />
+      <xacro:insert_block name="color_red" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <xacro:insert_block name="chassis_geometry" />
+    </collision>
+  </xacro:property>
+
+  <xacro:property name="swivel_visual_collision">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <xacro:insert_block name="swivel_geometry" />
+      <xacro:insert_block name="color_green" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <xacro:insert_block name="swivel_geometry" />
+    </collision>
+  </xacro:property>
+
+  <xacro:property name="wheel_visual_collision">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <xacro:insert_block name="wheel_geometry" />
+      <xacro:insert_block name="color_blue" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <xacro:insert_block name="wheel_geometry" />
+    </collision>
+  </xacro:property>
+
+  <!-- Common joint properties -->
+  <xacro:macro name="wheel_joint" parame="joint_name parent child">
+    <joint name="${joint_name}">
+      <origin xyz="0 -0.127 0" rpy="0 0 0" />
+      <parent link="${parent}" />
+      <child link="${child}" />
+      <axis xyz="-1 0 0" />
+    </joint>
+  </xacro:macro>
+
+  <!-- Constants -->
+  <xacro:property name="chassis_mass" value="7.0052"/>
+  <xacro:property name="swivel_mass" value="0.449039"/>
+  <xacro:property name="wheel_mass" value="0.15026"/>
+
+</robot>
+
+

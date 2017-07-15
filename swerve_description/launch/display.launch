@@ -1,0 +1,11 @@
+<launch>
+  <arg name="model"/>
+  <arg name="gui" default="false"/>
+  
+  <param name="robot_description" textfile="$(find swerve_description)/robots/swerve.xacro" />
+  <param name="use_gui" value="$(arg gui)" />
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" /> <!-- load joint state publsiher -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" /> <!-- load robot state publisher -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find swerve_description)/urdf.rviz" /> <!-- load RViz -->
+</launch>

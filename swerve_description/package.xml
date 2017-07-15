@@ -1,0 +1,16 @@
+<package format="2">
+  <name>swerve_description</name>
+  <version>0.0.1</version>
+  <description>The Swerve robot description package</description>
+
+  <maintainer email="wachterfreddy@gmail.com">Frederick Wachter</maintainer>
+
+  <license>MIT</license>
+
+  <author email="wachterfreddy@gmail.com">Frederick Wachter</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>xacro</exec_depend>
+</package>
+
+

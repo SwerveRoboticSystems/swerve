@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<!-- 
+Highest level XACRO file for the swerve robot
+Author: Frederick Wachter - wachterfreddy@gmail.com
+Created: 2017-07-15
+-->
+
+<robot name="swerve" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!---------
+     IMPORTS
+    --------->
+
+  <!-- Import constants and modeling macros -->
+  <!--<xacro:include filename="$(find swerve_description)/urdf/swerve_utilities.xacro"/>-->
+
+  <!-- Import swerve robot -->
+  <xacro:include filename="$(find swerve_description)/urdf/swerve_description.xacro"/>
+
+
+  <!------------------
+     WORLD DEFINITION
+    ------------------>
+
+  <!-- Fixed world frame -->
+  <link name="world"/>
+
+
+  <!-------------------
+     MACRO DEFINITIONS
+    ------------------->
+
+  <!-- Define macros for swerve import -->
+  <xacro:swerve name="swerve" parent="world">
+	  <origin xyz="0 0 0" rpy="0 0 0"/>
+  </xacro:swerve>
+
+</robot>
