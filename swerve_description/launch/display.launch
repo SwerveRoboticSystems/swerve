@@ -1,11 +1,38 @@
-<launch>
-  <arg name="model"/>
-  <arg name="gui" default="false"/>
-  
-  <param name="robot_description" textfile="$(find swerve_description)/robots/swerve.xacro" />
-  <param name="use_gui" value="$(arg gui)" />
+<!-- 
+Main launch file for loading Swerve into RViz offline
+Author: Frederick Wachter - wachterfreddy@gmail.com
+Created: 2017-07-15
+-->
 
-  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" /> <!-- load joint state publsiher -->
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" /> <!-- load robot state publisher -->
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find swerve_description)/urdf.rviz" /> <!-- load RViz -->
+<launch>
+
+	<arg name="gui" default="false" /> <!-- by default, don't load joint state publisher node -->
+  <arg name="debug" default="false" /> <!-- by default, we are not in debug mode -->
+  <arg name="robots_directory" value="$(find swerve_description)/robots" />
+
+	<param name="robot_description" command="$(find xacro)/xacro.py $(arg robots_directory)/swerve.urdf.xacro" />
+	<node pkg="xacro" type="xacro.py" name="xacro_urdf_output" args="$(arg robots_directory)/swerve.urdf.xacro -o $(arg robots_directory)/swerve.urdf" />
+	<param name="robot_description_semantic" textfile="$(find swerve_description)/config/swerve.srdf" />
+	<param name="use_gui" value="$(arg gui)" />
+
+	<!-- Load joint state publsiher node -->
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+		<rosparam param="/source_list">[/move_group/fake_controller_joint_states]</rosparam>
+	</node>
+
+	<!-- Load robot state publisher -->
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
+
+	<!-- Load RViz -->
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find swerve_description)/config/swerve.rviz">
+		<rosparam command="load" file="$(find swerve_description)/config/kinematics.yaml"/>
+	</node>
+
+	<!-- Run Move Group -->
+  <include file="$(find swerve_description)/launch/move_group.launch">
+    <arg name="allow_trajectory_execution" value="true" />
+    <arg name="fake_execution" value="true" />
+    <arg name="info" value="true" />
+    <arg name="debug" value="$(arg debug)" />
+  </include>
 </launch>

@@ -1,39 +1,132 @@
 <?xml version="1.0"?>
 
 <!-- 
-Highest level XACRO file for the swerve robot
+XACRO file for the swerve robot description
 Author: Frederick Wachter - wachterfreddy@gmail.com
 Created: 2017-07-15
 -->
 
 <robot name="swerve" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <!---------
-     IMPORTS
-    --------->
+  <!-- Include constants and modeling macros -->
+  <xacro:include filename="$(find swerve_description)/robots/swerve_utilities.xacro" />
 
-  <!-- Import constants and modeling macros -->
-  <!--<xacro:include filename="$(find swerve_description)/urdf/swerve_utilities.xacro"/>-->
+  <xacro:macro name="swerve" params="parent name *origin">
 
-  <!-- Import swerve robot -->
-  <xacro:include filename="$(find swerve_description)/urdf/swerve_description.xacro"/>
+    <!--
+      DUMMY JOINT DEFINITION
+    -->
 
+    <joint name="${parent}_joint" type="fixed">
+      <insert_block name="origin" />
+      <parent link="${parent}" />
+      <child link="${name}_body" />
+    </joint>
 
-  <!------------------
-     WORLD DEFINITION
-    ------------------>
+    <!--
+      CHASSIS DEFINITION
+    -->
+    <link name="${name}_body">
+      <inertial>
+        <origin xyz="9.6121E-17 -0.0127 -7.6853E-05" rpy="0 0 0" />
+        <mass value="${chassis_mass}" />
+        <inertia ixx="0.27011" ixy="1.9658E-19" ixz="1.4409E-16" iyy="0.5327" iyz="-3.5181E-19" izz="0.26334" />
+      </inertial>
+      <xacro:insert_block name="chassis_visual_collision" />
+    </link>
 
-  <!-- Fixed world frame -->
-  <link name="world"/>
+    <!--
+      FRONT SWIVEL DEFINITION
+    -->
+    <joint name="${name}_joint_FS" type="continuous">
+      <origin xyz="0 0.381 0" rpy="1.5708 0 0" />
+      <parent link="${name}_body" />
+      <child link="${name}_FS_link" />
+      <axis xyz="0 -1 0" />
+    </joint>
 
+    <link name="${name}_FS_link">
+      <inertial>
+        <origin xyz="-5.819E-13 -0.062713 0" rpy="0 0 0" />
+        <mass value="${swivel_mass}" />
+        <inertia ixx="0.0010313" ixy="1.377E-13" ixz="4.6213E-21" iyy="0.00038801" iyz="-9.7714E-21" izz="0.001103" />
+      </inertial>
+      <xacro:insert_block name="swivel_visual_collision" />
+    </link>
 
-  <!-------------------
-     MACRO DEFINITIONS
-    ------------------->
+    <xacro:wheel_joint joint_name="${name}_joint_FW" parent="${name}_FS_link" child="${name}_FW_link" />
 
-  <!-- Define macros for swerve import -->
-  <xacro:swerve name="swerve" parent="world">
-	  <origin xyz="0 0 0" rpy="0 0 0"/>
-  </xacro:swerve>
+    <link name="${name}_FW_link">
+      <inertial>
+        <origin xyz="-7.8185E-19 2.7756E-17 5.5511E-17" rpy="0 0 0" />
+        <mass value="${wheel_mass}" />
+        <inertia ixx="0.00016727" ixy="-4.9394E-22" ixz="-2.3462E-22" iyy="9.626E-05" iyz="-1.4682E-20" izz="9.626E-05" />
+      </inertial>
+      <xacro:insert_block name="wheel_visual_collision" />
+    </link>
+
+    <!--
+      LEFT SWIVEL DEFINITION
+    -->
+    <joint name="${name}_joint_LS" type="continuous">
+      <origin xyz="-0.32996 -0.1905 0" rpy="1.5708 0 0" />
+      <parent link="${name}_body" />
+      <child link="${name}_LS_link" />
+      <axis xyz="0 -1 0" />
+    </joint>
+
+    <link name="${name}_LS_link">
+      <inertial>
+        <origin xyz="-5.8187E-13 -0.062713 0" rpy="0 0 0" />
+        <mass value="${swivel_mass}" />
+        <inertia ixx="0.0010313" ixy="1.377E-13" ixz="1.6475E-20" iyy="0.00038801" iyz="2.1123E-20" izz="0.001103" />
+      </inertial>
+      <xacro:insert_block name="swivel_visual_collision" />
+    </link>
+
+    <xacro:wheel_joint joint_name="${name}_joint_LW" parent="${name}_LS_link" child="${name}_LW_link" />
+
+    <link name="${name}_LW_link">
+      <inertial>
+        <origin xyz="0 2.7756E-17 0" rpy="0 0 0" />
+        <mass value="${wheel_mass}" />
+        <inertia ixx="0.00016727" ixy="-1.3787E-22" ixz="-1.031E-22" iyy="9.626E-05" iyz="-3.3087E-21" izz="9.626E-05" />
+      </inertial>
+      <xacro:insert_block name="wheel_visual_collision" />
+    </link>
+
+    <!--
+      RIGHT SWIVEL DEFINITION
+    -->
+    <joint name="${name}_joint_RS" type="continuous">
+      <origin xyz="0.32996 -0.1905 0" rpy="1.5708 0 0" />
+      <parent link="${name}_body" />
+      <child link="${name}_RS_link" />
+      <axis xyz="0 -1 0" />
+    </joint>
+
+    <link name="${name}_RS_link">
+      <inertial>
+        <origin xyz="-5.8192E-13 -0.062713 -2.7756E-17" rpy="0 0 0" />
+        <mass value="${swivel_mass}" />
+        <inertia ixx="0.0010313" ixy="1.377E-13" ixz="1.6475E-20" iyy="0.00038801" iyz="2.1123E-20" izz="0.001103" />
+      </inertial>
+      <xacro:insert_block name="swivel_visual_collision" />
+    </link>
+
+    <xacro:wheel_joint joint_name="${name}_joint_RW" parent="${name}_RS_link" child="${name}_RW_link" />
+
+    <link name="${name}_RW_link">
+      <inertial>
+        <origin xyz="-5.5511E-17 2.7756E-17 -2.7756E-17" rpy="0 0 0" />
+        <mass value="${wheel_mass}" />
+        <inertia ixx="0.00016727" ixy="-1.3787E-22" ixz="-1.031E-22" iyy="9.626E-05" iyz="-3.3087E-21" izz="9.626E-05" />
+      </inertial>
+      <xacro:insert_block name="wheel_visual_collision" />
+    </link>
+
+  </xacro:macro>
 
 </robot>
+
+

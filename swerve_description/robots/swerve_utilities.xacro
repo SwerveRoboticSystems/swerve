@@ -84,8 +84,8 @@ Created: 2017-07-15
   </xacro:property>
 
   <!-- Common joint properties -->
-  <xacro:macro name="wheel_joint" parame="joint_name parent child">
-    <joint name="${joint_name}">
+  <xacro:macro name="wheel_joint" params="joint_name parent child">
+    <joint name="${joint_name}" type="continuous">
       <origin xyz="0 -0.127 0" rpy="0 0 0" />
       <parent link="${parent}" />
       <child link="${child}" />
@@ -94,9 +94,9 @@ Created: 2017-07-15
   </xacro:macro>
 
   <!-- Constants -->
-  <xacro:property name="chassis_mass" value="7.0052"/>
-  <xacro:property name="swivel_mass" value="0.449039"/>
-  <xacro:property name="wheel_mass" value="0.15026"/>
+  <xacro:property name="chassis_mass" value="7.0052" />
+  <xacro:property name="swivel_mass" value="0.449039" />
+  <xacro:property name="wheel_mass" value="0.15026" />
 
 </robot>
 

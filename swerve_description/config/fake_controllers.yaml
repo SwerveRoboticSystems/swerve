@@ -1,0 +1,19 @@
+controller_list:
+  - name: fake_swerve_controller
+    joints:
+      - swerve_base_joint
+  - name: fake_front_drive_controller
+    joints:
+      - swerve_base_joint
+      - swerve_joint_FS
+      - swerve_joint_FW
+  - name: fake_left_drive_controller
+    joints:
+      - swerve_base_joint
+      - swerve_joint_LS
+      - swerve_joint_LW
+  - name: fake_right_drive_controller
+    joints:
+      - swerve_base_joint
+      - swerve_joint_RS
+      - swerve_joint_RW

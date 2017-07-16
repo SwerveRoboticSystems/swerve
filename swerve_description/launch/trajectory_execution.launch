@@ -1,0 +1,18 @@
+<!-- 
+Trajectory execution for MoveIt! launch file
+Author: Frederick Wachter - wachterfreddy@gmail.com
+Created: 2017-07-15
+-->
+
+<launch>
+
+  <arg name="moveit_controller_manager" default="swerve" /> <!-- set which controller to be loaded -->
+  <arg name="moveit_manage_controllers" default="true"/> <!-- by default, load the controllers -->
+  
+  <param name="moveit_manage_controllers" value="$(arg moveit_manage_controllers)"/> <!-- set parameter to load or not load the controllers -->
+  <param name="allowed_execution_duration_scaling" value="2"/> <!-- set trajectoy execution timeout value -->
+  <param name="allowed_goal_duration_margin" value="2"/> <!-- set trajectory goal timeout value -->
+
+  <include file="$(find swerve_description)/launch/$(arg moveit_controller_manager)_moveit_controller_manager.launch" />
+  
+</launch>
