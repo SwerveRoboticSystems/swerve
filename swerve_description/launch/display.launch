@@ -9,7 +9,8 @@
 
 	<arg name="use_gui" default="false" /> <!-- by default, don't load joint state publisher node -->
 
-	<param name="robot_description" command="$(find xacro)/xacro.py '$(find swerve_description)/urdf/swerve.urdf.xacro'" />
+	<param name="robot_description" 
+			command="$(find xacro)/xacro.py '$(find swerve_description)/urdf/swerve.urdf.xacro'" />
 
 	<!-- Load joint state publsiher node -->
 	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
@@ -17,10 +18,12 @@
 	</node>
 
 	<!-- Load robot state publisher -->
-	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" 
+			respawn="true" output="screen" />
 
 	<!-- Load RViz -->
-	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find swerve_description)/config/swerve.rviz" />
+	<node name="rviz" pkg="rviz" type="rviz" 
+			args="-d $(find swerve_description)/config/swerve.rviz" />
 
 </launch>
 
