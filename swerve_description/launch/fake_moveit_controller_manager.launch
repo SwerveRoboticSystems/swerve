@@ -1,6 +1,0 @@
-<launch>
-
-	<param name="moveit_controller_manager" value="moveit_fake_controller_manager/MoveItFakeControllerManager"/>
-  	<rosparam file="$(find swerve_description)/config/fake_controllers.yaml"/>
-
-</launch>

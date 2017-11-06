@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
 
-<!-- 
-Highest level XACRO file for the swerve robot
-Author: Frederick Wachter - wachterfreddy@gmail.com
-Created: 2017-07-15
+<!--
+@file swerve.urdf.xacro
+@brief Main xacro file for Swerve robot
+@author Frederick Wachter - wachterfreddy@gmail.com
+@date Created: 2017-11-05
 -->
 
 <robot name="swerve" xmlns:xacro="http://www.ros.org/wiki/xacro">
@@ -13,10 +14,10 @@ Created: 2017-07-15
   -->
 
   <!-- Import constants and modeling macros -->
-  <xacro:include filename="$(find swerve_description)/robots/swerve_utilities.xacro"/>
+  <xacro:include filename="$(find swerve_description)/urdf/swerve_utilities.xacro"/>
 
   <!-- Import swerve robot -->
-  <xacro:include filename="$(find swerve_description)/robots/swerve.xacro"/>
+  <xacro:include filename="$(find swerve_description)/urdf/swerve.xacro"/>
 
 
   <!--
@@ -37,3 +38,6 @@ Created: 2017-07-15
   </xacro:swerve>
 
 </robot>
+
+
+

@@ -32,4 +32,4 @@
 *.app
 
 # ROS Files
-#*.urdf
+*.urdf

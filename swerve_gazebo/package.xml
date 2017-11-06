@@ -1,17 +1,15 @@
 <package format="2">
-	
-  <name>swerve_description</name>
+
+  <name>swerve_gazebo</name>
   <version>0.0.1</version>
-  <description>The Swerve robot description package</description>
+  <description>The Swerve Gazebo ROS package</description>
 
   <maintainer email="wachterfreddy@gmail.com">Frederick Wachter</maintainer>
+  <author email="wachterfreddy@gmail.com">Frederick Wachter</author>
 
   <license>MIT</license>
 
-  <author email="wachterfreddy@gmail.com">Frederick Wachter</author>
-
   <buildtool_depend>catkin</buildtool_depend>
-  <exec_depend>xacro</exec_depend>
 
 </package>
 
