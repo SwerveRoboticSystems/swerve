@@ -1,29 +1,41 @@
 <!-- 
 @file display.launch
-@breif Displays Swerve in RViz
+@brief Displays Swerve in RViz
 @author Frederick Wachter - wachterfreddy@gmail.com
 @date Created: 2017-11-05
 -->
 
 <launch>
 
+	<!--
+      Arguments
+  -->
+
+	<arg name="solo" default="false"/> <!-- by default, running with either the on-line or off-line sim -->
 	<arg name="use_gui" default="false" /> <!-- by default, don't load joint state publisher node -->
 
-	<param name="robot_description" 
-			command="$(find xacro)/xacro.py '$(find swerve_description)/urdf/swerve.urdf.xacro'" />
+	<!--
+      Run ROS Nodes
+  -->
 
-	<!-- Load joint state publsiher node -->
-	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
-		<param name="use_gui" value="$(arg use_gui)" />
-	</node>
+	<!-- If Running Without On-line or Off-line Sim -->
+	<group if="$(arg solo)">
+		<!-- Load Robot Description -->
+	  <param name="robot_description" command="$(find xacro)/xacro.py '$(find swerve_description)/urdf/swerve.urdf.xacro'"/>
 
-	<!-- Load robot state publisher -->
-	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" 
-			respawn="true" output="screen" />
+	  <!-- Run Joint State Publisher Node -->
+	  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+	    <param name="use_gui" value="$(arg use_gui)" />
+	  </node>
+
+	  <!-- Run Robot State Publisher -->
+	  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" 
+	      respawn="true" output="screen"/>
+	</group>
 
 	<!-- Load RViz -->
 	<node name="rviz" pkg="rviz" type="rviz" 
-			args="-d $(find swerve_description)/config/swerve.rviz" />
+			args="-d $(find swerve_description)/config/swerve.rviz"/>
 
 </launch>
 

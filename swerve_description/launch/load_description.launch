@@ -1,0 +1,15 @@
+<!-- 
+@file load_description.launch
+@brief Loads robot description to ROS parameter server
+@author Frederick Wachter - wachterfreddy@gmail.com
+@date Created: 2017-11-05
+-->
+
+<launch>
+
+	<!-- Load Robot Description -->
+	<param name="robot_description" command="$(find xacro)/xacro.py '$(find swerve_description)/urdf/swerve.urdf.xacro'"/>
+
+</launch>
+
+

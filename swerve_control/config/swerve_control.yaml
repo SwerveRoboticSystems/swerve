@@ -1,0 +1,28 @@
+swerve:
+
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  # Joint Position Controllers ----------------------------------------
+  joint_FS_pos_controller:
+    type: position_controllers/JointPositionController
+    joint: swerve_joint_FS
+  joint_FW_pos_controller:
+    type: position_controllers/JointPositionController
+    joint: swerve_joint_FW
+  joint_LS_pos_controller:
+    type: position_controllers/JointPositionController
+    joint: swerve_joint_LS
+  joint_LW_pos_controller:
+    type: position_controllers/JointPositionController
+    joint: swerve_joint_LW
+  joint_RS_pos_controller:
+    type: position_controllers/JointPositionController
+    joint: swerve_joint_RS
+  joint_RW_pos_controller:
+    type: position_controllers/JointPositionController
+    joint: swerve_joint_RW
+
+

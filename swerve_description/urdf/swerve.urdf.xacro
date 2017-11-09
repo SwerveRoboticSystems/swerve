@@ -16,6 +16,9 @@
   <!-- Import constants and modeling macros -->
   <xacro:include filename="$(find swerve_description)/urdf/swerve_utilities.xacro"/>
 
+  <!-- Import Gazebo tags -->
+  <xacro:include filename="$(find swerve_description)/urdf/swerve_gazebo.xacro"/>
+
   <!-- Import swerve robot -->
   <xacro:include filename="$(find swerve_description)/urdf/swerve.xacro"/>
 

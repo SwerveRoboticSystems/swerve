@@ -9,6 +9,13 @@
 
 <robot name="swerve" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+  <!-- Constants -->
+  <xacro:property name="chassis_mass" value="7.0052" />
+  <xacro:property name="swivel_mass" value="0.449039" />
+  <xacro:property name="wheel_mass" value="0.15026" />
+  <xacro:property name="hardware_interface" value="PositionJointInterface" />
+  <xacro:property name="mechanical_reduction" value="1" />
+
   <!-- Common geometry properties -->
   <xacro:property name="chassis_geometry">
     <geometry>
@@ -92,12 +99,38 @@
       <child link="${child}" />
       <axis xyz="-1 0 0" />
     </joint>
+
+    <transmission name="${joint_name}_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${joint_name}">
+        <hardwareInterface>${hardware_interface}</hardwareInterface>
+      </joint>
+      <actuator name="${joint_name}_motor">
+        <mechanicalReduction>${mechanical_reduction}</mechanicalReduction>
+        <hardwareInterface>${hardware_interface}</hardwareInterface>
+      </actuator>
+    </transmission>
   </xacro:macro>
 
-  <!-- Constants -->
-  <xacro:property name="chassis_mass" value="7.0052" />
-  <xacro:property name="swivel_mass" value="0.449039" />
-  <xacro:property name="wheel_mass" value="0.15026" />
+  <xacro:macro name="swerve_joint" params="joint_name parent child x y">
+    <joint name="${joint_name}" type="continuous">
+      <origin xyz="${x} ${y} 0" rpy="1.5708 0 0" />
+      <parent link="${parent}" />
+      <child link="${child}" />
+      <axis xyz="0 -1 0" />
+    </joint>
+
+    <transmission name="${joint_name}_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${joint_name}">
+        <hardwareInterface>${hardware_interface}</hardwareInterface>
+      </joint>
+      <actuator name="${joint_name}_motor">
+        <mechanicalReduction>${mechanical_reduction}</mechanicalReduction>
+        <hardwareInterface>${hardware_interface}</hardwareInterface>
+      </actuator>
+    </transmission>
+  </xacro:macro>
 
 </robot>
 

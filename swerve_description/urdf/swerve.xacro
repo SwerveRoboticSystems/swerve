@@ -38,12 +38,7 @@
     <!--
       FRONT SWIVEL DEFINITION
     -->
-    <joint name="${name}_joint_FS" type="continuous">
-      <origin xyz="0 0.381 0" rpy="1.5708 0 0" />
-      <parent link="${name}_body" />
-      <child link="${name}_FS_link" />
-      <axis xyz="0 -1 0" />
-    </joint>
+    <xacro:swerve_joint joint_name="${name}_joint_FS" parent="${name}_body" child="${name}_FS_link" x="0" y="0.381" />
 
     <link name="${name}_FS_link">
       <inertial>
@@ -68,12 +63,7 @@
     <!--
       LEFT SWIVEL DEFINITION
     -->
-    <joint name="${name}_joint_LS" type="continuous">
-      <origin xyz="-0.32996 -0.1905 0" rpy="1.5708 0 0" />
-      <parent link="${name}_body" />
-      <child link="${name}_LS_link" />
-      <axis xyz="0 -1 0" />
-    </joint>
+    <xacro:swerve_joint joint_name="${name}_joint_LS" parent="${name}_body" child="${name}_LS_link" x="-0.32996" y="-0.1905" />
 
     <link name="${name}_LS_link">
       <inertial>
@@ -98,12 +88,7 @@
     <!--
       RIGHT SWIVEL DEFINITION
     -->
-    <joint name="${name}_joint_RS" type="continuous">
-      <origin xyz="0.32996 -0.1905 0" rpy="1.5708 0 0" />
-      <parent link="${name}_body" />
-      <child link="${name}_RS_link" />
-      <axis xyz="0 -1 0" />
-    </joint>
+    <xacro:swerve_joint joint_name="${name}_joint_RS" parent="${name}_body" child="${name}_RS_link" x="0.32996" y="-0.1905" />
 
     <link name="${name}_RS_link">
       <inertial>

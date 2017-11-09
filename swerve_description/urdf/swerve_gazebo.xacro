@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<!--
+@file swerve_gazebo.xacro
+@breif Swerve robot Gazebo xacro tags
+@author Frederick Wachter - wachterfreddy@gmail.com
+@date Created: 2017-11-08
+-->
+
+<robot name="swerve" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <gazebo>
+    <plugin name="gazebo_ros_controller" filename="libgazebo_ros_control.so">
+      <robotNamespace>/swerve</robotNamespace>
+    </plugin>
+  </gazebo>
+
+</robot>
+
+

@@ -1,0 +1,26 @@
+<!--
+@file swerve_control.launch
+@brief Start ROS control for ROS Gazebo interface
+@author Frederick Wachter - wachterfreddy@gmail.com
+@date Created: 2017-11-08
+-->
+
+<launch>
+
+  <!-- Load joint controller configurations -->
+  <rosparam file="$(find swerve_control)/config/swerve_control.yaml" command="load"/>
+
+  <!-- load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+      output="screen" ns="/swerve" args="joint_state_controller joint_FS_pos_controller joint_FW_pos_controller 
+      joint_LS_pos_controller joint_LW_pos_controller joint_RS_pos_controller joint_RW_pos_controller"/>
+
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" 
+      respawn="false" output="screen">
+    <remap from="/joint_states" to="/swerve/joint_states" />
+  </node>
+
+</launch>
+
+
