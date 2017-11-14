@@ -12,7 +12,7 @@
   <!-- Include constants and modeling macros -->
   <xacro:include filename="$(find swerve_description)/urdf/swerve_utilities.xacro" />
 
-  <xacro:macro name="swerve" params="parent name *origin">
+  <xacro:macro name="swerve" params="parent name *origin hardware_interface">
 
     <!--
       DUMMY JOINT DEFINITION
@@ -38,7 +38,8 @@
     <!--
       FRONT SWIVEL DEFINITION
     -->
-    <xacro:swerve_joint joint_name="${name}_joint_FS" parent="${name}_body" child="${name}_FS_link" x="0" y="0.381" />
+    <xacro:swerve_joint joint_name="${name}_joint_FS" parent="${name}_body" child="${name}_FS_link" 
+        x="0" y="0.381" hardware_interface="${hardware_interface}"/>
 
     <link name="${name}_FS_link">
       <inertial>
@@ -49,7 +50,8 @@
       <xacro:insert_block name="swivel_visual_collision" />
     </link>
 
-    <xacro:wheel_joint joint_name="${name}_joint_FW" parent="${name}_FS_link" child="${name}_FW_link" />
+    <xacro:wheel_joint joint_name="${name}_joint_FW" parent="${name}_FS_link" child="${name}_FW_link" 
+        hardware_interface="${hardware_interface}"/>
 
     <link name="${name}_FW_link">
       <inertial>
@@ -63,7 +65,8 @@
     <!--
       LEFT SWIVEL DEFINITION
     -->
-    <xacro:swerve_joint joint_name="${name}_joint_LS" parent="${name}_body" child="${name}_LS_link" x="-0.32996" y="-0.1905" />
+    <xacro:swerve_joint joint_name="${name}_joint_LS" parent="${name}_body" child="${name}_LS_link" 
+        x="-0.32996" y="-0.1905" hardware_interface="${hardware_interface}"/>
 
     <link name="${name}_LS_link">
       <inertial>
@@ -74,7 +77,8 @@
       <xacro:insert_block name="swivel_visual_collision" />
     </link>
 
-    <xacro:wheel_joint joint_name="${name}_joint_LW" parent="${name}_LS_link" child="${name}_LW_link" />
+    <xacro:wheel_joint joint_name="${name}_joint_LW" parent="${name}_LS_link" child="${name}_LW_link" 
+        hardware_interface="${hardware_interface}"/>
 
     <link name="${name}_LW_link">
       <inertial>
@@ -88,7 +92,8 @@
     <!--
       RIGHT SWIVEL DEFINITION
     -->
-    <xacro:swerve_joint joint_name="${name}_joint_RS" parent="${name}_body" child="${name}_RS_link" x="0.32996" y="-0.1905" />
+    <xacro:swerve_joint joint_name="${name}_joint_RS" parent="${name}_body" child="${name}_RS_link" 
+        x="0.32996" y="-0.1905"  hardware_interface="${hardware_interface}"/>
 
     <link name="${name}_RS_link">
       <inertial>
@@ -99,7 +104,8 @@
       <xacro:insert_block name="swivel_visual_collision" />
     </link>
 
-    <xacro:wheel_joint joint_name="${name}_joint_RW" parent="${name}_RS_link" child="${name}_RW_link" />
+    <xacro:wheel_joint joint_name="${name}_joint_RW" parent="${name}_RS_link" child="${name}_RW_link" 
+        hardware_interface="${hardware_interface}"/>
 
     <link name="${name}_RW_link">
       <inertial>

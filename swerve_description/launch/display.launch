@@ -8,16 +8,14 @@
 <launch>
 
 	<!--
-      Arguments
+    Arguments
   -->
-
 	<arg name="solo" default="false"/> <!-- by default, running with either the on-line or off-line sim -->
-	<arg name="use_gui" default="false" /> <!-- by default, don't load joint state publisher node -->
+	<arg name="use_gui" default="false"/> <!-- by default, don't load joint state publisher node -->
 
 	<!--
-      Run ROS Nodes
+    Run ROS Nodes
   -->
-
 	<!-- If Running Without On-line or Off-line Sim -->
 	<group if="$(arg solo)">
 		<!-- Load Robot Description -->
@@ -25,7 +23,7 @@
 
 	  <!-- Run Joint State Publisher Node -->
 	  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
-	    <param name="use_gui" value="$(arg use_gui)" />
+	    <param name="use_gui" value="$(arg use_gui)"/>
 	  </node>
 
 	  <!-- Run Robot State Publisher -->

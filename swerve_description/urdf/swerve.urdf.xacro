@@ -9,6 +9,14 @@
 
 <robot name="swerve" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+  <!--
+    FIXED FRAME DEFINITION
+  -->
+
+  <!-- Fixed swerve dummy frame -->
+  <link name="odom" />
+
+
   <!-- 
     IMPORTS 
   -->
@@ -24,19 +32,11 @@
 
 
   <!--
-    WORLD DEFINITION
-  -->
-
-  <!-- Fixed dummy frame -->
-  <link name="swerve_base" />
-
-
-  <!--
     MACRO DEFINITIONS
   -->
 
   <!-- Define macros for swerve import -->
-  <xacro:swerve name="swerve" parent="swerve_base">
+  <xacro:swerve name="swerve" parent="odom" hardware_interface="$(arg hardware_interface)">
 	  <origin xyz="0 0 0.17" rpy="0 0 0"/>
   </xacro:swerve>
 

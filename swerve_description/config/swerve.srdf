@@ -8,7 +8,7 @@ Created: 2017-07-15
 
 <robot name="swerve">
 
-  <virtual_joint name="swerve_base_joint" type="planar" parent_frame="swerve_base" child_link="swerve_body" />
+  <virtual_joint name="world_joint" type="planar" parent_frame="world" child_link="odom" />
   
   <group name="swerve">
     <joint name="swerve_base_joint" />
@@ -43,14 +43,14 @@ Created: 2017-07-15
   <disable_collisions link1="swerve_FS_link" link2="swerve_body" reason="Adjacent" />
   <disable_collisions link1="swerve_LS_link" link2="swerve_body" reason="Adjacent" />
   <disable_collisions link1="swerve_RS_link" link2="swerve_body" reason="Adjacent" />
-  <disable_collisions link1="swerve_body" link2="swerve_base" reason="Adjacent" />
+  <disable_collisions link1="swerve_body" link2="odom" reason="Adjacent" />
 
-  <disable_collisions link1="swerve_FW_link" link2="swerve_base" reason="Never" />
-  <disable_collisions link1="swerve_LW_link" link2="swerve_base" reason="Never" />
-  <disable_collisions link1="swerve_RW_link" link2="swerve_base" reason="Never" />
-  <disable_collisions link1="swerve_FS_link" link2="swerve_base" reason="Never" />
-  <disable_collisions link1="swerve_LS_link" link2="swerve_base" reason="Never" />
-  <disable_collisions link1="swerve_RS_link" link2="swerve_base" reason="Never" />
+  <disable_collisions link1="swerve_FW_link" link2="odom" reason="Never" />
+  <disable_collisions link1="swerve_LW_link" link2="odom" reason="Never" />
+  <disable_collisions link1="swerve_RW_link" link2="odom" reason="Never" />
+  <disable_collisions link1="swerve_FS_link" link2="odom" reason="Never" />
+  <disable_collisions link1="swerve_LS_link" link2="odom" reason="Never" />
+  <disable_collisions link1="swerve_RS_link" link2="odom" reason="Never" />
 
   <disable_collisions link1="swerve_FW_link" link2="swerve_body" reason="Never" />
   <disable_collisions link1="swerve_LW_link" link2="swerve_body" reason="Never" />

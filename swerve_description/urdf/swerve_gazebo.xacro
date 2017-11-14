@@ -10,9 +10,22 @@
 <robot name="swerve" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <gazebo>
+
     <plugin name="gazebo_ros_controller" filename="libgazebo_ros_control.so">
       <robotNamespace>/swerve</robotNamespace>
     </plugin>
+
+    <plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
+		  <alwaysOn>true</alwaysOn>
+		  <updateRate>50.0</updateRate>
+		  <bodyName>odom</bodyName>
+		  <topicName>odom</topicName>
+		  <gaussianNoise>0.01</gaussianNoise>
+		  <frameName>world</frameName>
+		  <xyzOffsets>0 0 0</xyzOffsets>
+		  <rpyOffsets>0 0 0</rpyOffsets>
+		</plugin>
+
   </gazebo>
 
 </robot>

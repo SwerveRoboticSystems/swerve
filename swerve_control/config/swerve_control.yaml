@@ -25,4 +25,24 @@ swerve:
     type: position_controllers/JointPositionController
     joint: swerve_joint_RW
 
+  # Joint Velocity Controllers ----------------------------------------
+  joint_FS_vel_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: swerve_joint_FS
+  joint_FW_vel_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: swerve_joint_FW
+  joint_LS_vel_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: swerve_joint_LS
+  joint_LW_vel_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: swerve_joint_LW
+  joint_RS_vel_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: swerve_joint_RS
+  joint_RW_vel_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: swerve_joint_RW
+
 

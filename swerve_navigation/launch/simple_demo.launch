@@ -1,0 +1,33 @@
+<!-- 
+@file simple_demo.launch
+@brief Runs simple demo running Swerve in Gazebo and RViz
+@author Frederick Wachter - wachterfreddy@gmail.com
+@date Created: 2017-11-14
+-->
+
+<launch>
+
+	<!--
+    Include Other Launch Files
+  -->
+	<include file="$(find swerve_gazebo)/launch/swerve_gazebo.launch"> <!-- load Swerve in Gazebo -->
+		<arg name="vel_control" value="true"/>
+	</include>	
+	<include file="$(find swerve_description)/launch/display.launch"/> <!-- load Swerve in RViz -->
+
+	<!--
+    Run ROS Nodes
+  -->
+	<node pkg="swerve_navigation" type="odom_pub" name="odom_pub"/> <!-- odom/world tf publisher node -->
+
+	<!--
+    Move Swerve
+  -->
+  <node pkg="rostopic" type="rostopic" name="front_wheel_move" 
+  		args="pub -l /swerve/joint_FW_vel_controller/command std_msgs/Float64 'data: 3.0'"/> <!-- move front wheel -->
+  <node pkg="rostopic" type="rostopic" name="right_wheel_move" 
+  		args="pub -l /swerve/joint_RW_vel_controller/command std_msgs/Float64 'data: 3.0'"/> <!-- move right wheel -->
+
+</launch>
+
+

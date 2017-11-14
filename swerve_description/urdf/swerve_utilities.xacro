@@ -13,7 +13,6 @@
   <xacro:property name="chassis_mass" value="7.0052" />
   <xacro:property name="swivel_mass" value="0.449039" />
   <xacro:property name="wheel_mass" value="0.15026" />
-  <xacro:property name="hardware_interface" value="PositionJointInterface" />
   <xacro:property name="mechanical_reduction" value="1" />
 
   <!-- Common geometry properties -->
@@ -92,7 +91,7 @@
   </xacro:property>
 
   <!-- Common joint properties -->
-  <xacro:macro name="wheel_joint" params="joint_name parent child">
+  <xacro:macro name="wheel_joint" params="joint_name parent child hardware_interface">
     <joint name="${joint_name}" type="continuous">
       <origin xyz="0 -0.127 0" rpy="0 0 0" />
       <parent link="${parent}" />
@@ -112,7 +111,7 @@
     </transmission>
   </xacro:macro>
 
-  <xacro:macro name="swerve_joint" params="joint_name parent child x y">
+  <xacro:macro name="swerve_joint" params="joint_name parent child x y hardware_interface">
     <joint name="${joint_name}" type="continuous">
       <origin xyz="${x} ${y} 0" rpy="1.5708 0 0" />
       <parent link="${parent}" />

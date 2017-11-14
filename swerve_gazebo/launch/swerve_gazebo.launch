@@ -8,12 +8,10 @@
 <launch>
 
   <!--
-      Arguments
+    Arguments
   -->
-
   <!-- ROS arguments -->
-  <arg name="joint_pub" default="false"/> <!-- by default, don't run joint state publisher -->
-  <arg name="use_gui" default="false"/> <!-- by default, don't load joint state publisher GUI -->
+  <arg name="vel_control" default="true"/>
 
   <!-- Gazebo arguments -->
   <arg name="world" default="empty"/> 
@@ -24,9 +22,8 @@
   <arg name="debug" default="false"/>
   
   <!--
-      Load Gazebo
+    Load Gazebo
   -->
-
   <!-- Load Gazebo -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(find swerve_gazebo)/worlds/swerve.world"/>
@@ -38,23 +35,22 @@
   </include>
 
   <!--
-      Run ROS Nodes
+    Run ROS Nodes
   -->
-
-  <!-- Load robot description -->
-  <param name="robot_description" command="$(find xacro)/xacro.py '$(find swerve_description)/urdf/swerve.urdf.xacro'"/>
-
-  <!-- If the user want the joint state publisher to be loaded -->
-  <group if="$(arg joint_pub)">
-    <!-- Run joint state publisher node -->
-    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
-      <param name="use_gui" value="$(arg use_gui)" />
-    </node>
+  <!-- Load robot description and controllers -->
+  <group if="$(arg vel_control)">
+    <param name="robot_description" command="$(find xacro)/xacro.py '$(find swerve_description)/urdf/swerve.urdf.xacro' 
+        hardware_interface:=VelocityJointInterface"/>
+  </group>
+  <group unless="$(arg vel_control)">
+    <param name="robot_description" command="$(find xacro)/xacro.py '$(find swerve_description)/urdf/swerve.urdf.xacro' 
+        hardware_interface:=PositionJointInterface"/>
   </group>
 
-  <!-- Run robot state publisher -->
-<!--   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" 
-      respawn="true" output="screen"/> -->
+  <!-- Load controllers -->
+  <include file="$(find swerve_control)/launch/swerve_control.launch"> <!-- load Swerve in RViz -->
+    <arg name="vel_control" value="$(arg vel_control)"/>
+  </include>
 
   <!-- Run Gazebo ROS node -->
   <node pkg="gazebo_ros" type="spawn_model" name="swerve_spawn" output="screen" 
