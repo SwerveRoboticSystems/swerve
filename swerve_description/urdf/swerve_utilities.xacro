@@ -10,6 +10,8 @@
 <robot name="swerve" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <!-- Constants -->
+  <xacro:property name="pi" value="1.5708" />
+  
   <xacro:property name="chassis_mass" value="7.0052" />
   <xacro:property name="swivel_mass" value="0.449039" />
   <xacro:property name="wheel_mass" value="0.15026" />

@@ -10,6 +10,7 @@
 	<!--
     Arguments
   -->
+	<arg name="vel_control" default="true"/>
 	<arg name="solo" default="false"/> <!-- by default, running with either the on-line or off-line sim -->
 	<arg name="use_gui" default="false"/> <!-- by default, don't load joint state publisher node -->
 
@@ -19,7 +20,9 @@
 	<!-- If Running Without On-line or Off-line Sim -->
 	<group if="$(arg solo)">
 		<!-- Load Robot Description -->
-	  <param name="robot_description" command="$(find xacro)/xacro.py '$(find swerve_description)/urdf/swerve.urdf.xacro'"/>
+	  <include file="$(find swerve_description)/launch/load_description.launch">
+	  	<arg name="vel_control" value="$(arg vel_control)"/>
+	  </include>
 
 	  <!-- Run Joint State Publisher Node -->
 	  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">

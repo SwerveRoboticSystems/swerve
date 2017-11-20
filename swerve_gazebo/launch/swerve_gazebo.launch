@@ -17,7 +17,7 @@
   <arg name="world" default="empty"/> 
   <arg name="paused" default="false"/>
   <arg name="use_sim_time" default="true"/>
-  <arg name="gui" default="true"/>
+  <arg name="gazebo_viz" default="true"/>
   <arg name="headless" default="false"/>
   <arg name="debug" default="false"/>
   
@@ -29,7 +29,7 @@
     <arg name="world_name" value="$(find swerve_gazebo)/worlds/swerve.world"/>
     <arg name="paused" value="$(arg paused)"/>
     <arg name="use_sim_time" value="$(arg use_sim_time)"/>
-    <arg name="gui" value="$(arg gui)"/>
+    <arg name="gui" value="$(arg gazebo_viz)"/>
     <arg name="headless" value="$(arg headless)"/>
     <arg name="debug" value="$(arg debug)"/>
   </include>
@@ -38,14 +38,9 @@
     Run ROS Nodes
   -->
   <!-- Load robot description and controllers -->
-  <group if="$(arg vel_control)">
-    <param name="robot_description" command="$(find xacro)/xacro.py '$(find swerve_description)/urdf/swerve.urdf.xacro' 
-        hardware_interface:=VelocityJointInterface"/>
-  </group>
-  <group unless="$(arg vel_control)">
-    <param name="robot_description" command="$(find xacro)/xacro.py '$(find swerve_description)/urdf/swerve.urdf.xacro' 
-        hardware_interface:=PositionJointInterface"/>
-  </group>
+  <include file="$(find swerve_description)/launch/load_description.launch">
+    <arg name="vel_control" value="$(arg vel_control)"/>
+  </include>
 
   <!-- Load controllers -->
   <include file="$(find swerve_control)/launch/swerve_control.launch"> <!-- load Swerve in RViz -->

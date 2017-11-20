@@ -7,8 +7,18 @@
 
 <launch>
 
+	<!-- ROS arguments -->
+	<arg name="vel_control" default="true"/>
+
 	<!-- Load Robot Description -->
-	<param name="robot_description" command="$(find xacro)/xacro.py '$(find swerve_description)/urdf/swerve.urdf.xacro'"/>
+	<group if="$(arg vel_control)">
+    <param name="robot_description" command="$(find xacro)/xacro.py '$(find swerve_description)/urdf/swerve.urdf.xacro' 
+        hardware_interface:=VelocityJointInterface"/>
+  </group>
+  <group unless="$(arg vel_control)">
+    <param name="robot_description" command="$(find xacro)/xacro.py '$(find swerve_description)/urdf/swerve.urdf.xacro' 
+        hardware_interface:=PositionJointInterface"/>
+  </group>
 
 </launch>
 

@@ -37,7 +37,7 @@
 
   <!-- Define macros for swerve import -->
   <xacro:swerve name="swerve" parent="odom" hardware_interface="$(arg hardware_interface)">
-	  <origin xyz="0 0 0.17" rpy="0 0 0"/>
+	  <origin xyz="0 0 0.17" rpy="0 0 -${pi}"/> <!-- rotate 90 degrees due to error in black box model -->
   </xacro:swerve>
 
 </robot>
