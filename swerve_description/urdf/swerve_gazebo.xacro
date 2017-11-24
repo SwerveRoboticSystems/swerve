@@ -10,30 +10,30 @@
 <robot name="swerve" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <!--
-    ODOM CONTROLLER
+  ODOM CONTROLLER
   -->
-	<gazebo>
+  <gazebo>
 
-		<plugin name="gazebo_ros_controller" filename="libgazebo_ros_control.so">
-			<robotNamespace>/swerve</robotNamespace>
-		</plugin>
+    <plugin name="gazebo_ros_controller" filename="libgazebo_ros_control.so">
+      <robotNamespace>/swerve</robotNamespace>
+    </plugin>
 
-		<plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
-			<alwaysOn>true</alwaysOn>
-			<updateRate>50.0</updateRate>
-			<bodyName>odom</bodyName>
-			<topicName>odom</topicName>
-			<gaussianNoise>0.01</gaussianNoise>
-			<frameName>world</frameName>
-			<xyzOffsets>0 0 0</xyzOffsets>
-			<rpyOffsets>0 0 0</rpyOffsets>
-		</plugin>
-	</gazebo>
+    <plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>50.0</updateRate>
+      <bodyName>odom</bodyName>
+      <topicName>odom</topicName>
+      <gaussianNoise>0.01</gaussianNoise>
+      <frameName>world</frameName>
+      <xyzOffsets>0 0 0</xyzOffsets>
+      <rpyOffsets>0 0 0</rpyOffsets>
+    </plugin>
+  </gazebo>
 
   <!--
-    LIDAR
+  LIDAR
   -->
-	<gazebo reference="laser">
+  <gazebo reference="laser">
     <sensor type="gpu_ray" name="laser">
       <always_on>true</always_on>
       <pose>0 0 0 0 0 0</pose>
@@ -56,14 +56,14 @@
         <noise>
           <type>gaussian</type>
           <!-- Noise parameters based on published spec for Hokuyo laser
-               achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
-               stddev of 0.01m will put 99.7% of samples within 0.03m of the true
-               reading. -->
-          <mean>0.0</mean>
-          <stddev>0.01</stddev>
-        </noise>
-      </ray>
-      <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_gpu_laser.so">
+           achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
+           stddev of 0.01m will put 99.7% of samples within 0.03m of the true
+           reading. -->
+           <mean>0.0</mean>
+           <stddev>0.01</stddev>
+         </noise>
+       </ray>
+       <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_gpu_laser.so">
         <topicName>scan</topicName>
         <frameName>laser</frameName>
       </plugin>
@@ -71,9 +71,8 @@
   </gazebo>
 
   <!--
-    ZED CAMERA
+  ZED CAMERA
   -->
-
   <gazebo reference="zed_center">
     <sensor type="multicamera" name="zed_camera">
       <update_rate>30.0</update_rate>
@@ -117,7 +116,7 @@
         <alwaysOn>true</alwaysOn>
         <updateRate>0.0</updateRate>
         <cameraName>camera</cameraName>
-        <imageTopicName>image_raw_color</imageTopicName>
+        <imageTopicName>image_raw</imageTopicName>
         <cameraInfoTopicName>camera_info</cameraInfoTopicName>
         <frameName>zed_center</frameName>
         <hackBaseline>0</hackBaseline>
@@ -129,152 +128,42 @@
       </plugin>
     </sensor>
   </gazebo>
-
-  <!-- <gazebo>
-    <sensor type="camera" name="left_camera">
-      <update_rate>30.0</update_rate>
+  <gazebo reference="zed_depth">  
+    <sensor type="depth" name="camera">
+      <always_on>true</always_on>
+      <update_rate>20.0</update_rate>
       <camera>
         <horizontal_fov>2.0</horizontal_fov>
         <image>
-          <width>800</width>
-          <height>800</height>
-          <format>R8G8B8</format>
-        </image>
-        <clip>
-          <near>0.02</near>
-          <far>300</far>
-        </clip>
-      </camera>
-    <plugin name="depth_camera_controller" filename="libgazebo_ros_openni_kinect.so">
-      <baseline>0.2</baseline>
-      <alwaysOn>true</alwaysOn>
-      <updateRate>0</updateRate>
-      <cameraName>zed_camera</cameraName>
-      <imageTopicName>/camera/depth/image_raw</imageTopicName>
-      <cameraInfoTopicName>/camera/depth/camera_info</cameraInfoTopicName>
-      <depthImageTopicName>/camera/depth/image_raw</depthImageTopicName>
-      <depthImageInfoTopicName>/camera/depth/camera_info</depthImageInfoTopicName>
-      <pointCloudTopicName>/camera/depth/points</pointCloudTopicName>
-      <frameName>zed_center</frameName>
-      <pointCloudCutoff>0.5</pointCloudCutoff>
-      <distortionK1>0.00000001</distortionK1>
-      <distortionK2>0.00000001</distortionK2>
-      <distortionK3>0.00000001</distortionK3>
-      <distortionT1>0.00000001</distortionT1>
-      <distortionT2>0.00000001</distortionT2>
-      <CxPrime>0</CxPrime>
-      <Cx>0</Cx>
-      <Cy>0</Cy>
-      <focalLength>0</focalLength>
-      <hackBaseline>0</hackBaseline>
-    </plugin>
-    </sensor>
-  </gazebo> -->
-
-  <!-- <gazebo reference="zed_left_camera">
-    <material>Gazebo/Green</material>
-    <sensor type="camera" name="left_camera">
-      <update_rate>30.0</update_rate>
-      <camera name="left">
-        <horizontal_fov>2.0</horizontal_fov>
-        <image>
-          <width>800</width>
-          <height>800</height>
-          <format>R8G8B8</format>
-        </image>
-        <clip>
-          <near>0.02</near>
-          <far>300</far>
-        </clip>
-      </camera>
-      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
-        <alwaysOn>true</alwaysOn>
-        <updateRate>0.0</updateRate>
-        <cameraName>camera/left</cameraName>
-        <imageTopicName>image_raw</imageTopicName>
-        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
-        <frameName>zed_left_camera</frameName>
-        <hackBaseline>0.07</hackBaseline>
-        <distortionK1>0.0</distortionK1>
-        <distortionK2>0.0</distortionK2>
-        <distortionK3>0.0</distortionK3>
-        <distortionT1>0.0</distortionT1>
-        <distortionT2>0.0</distortionT2>
-      </plugin>
-    </sensor>
-  </gazebo> -->
-  <!-- <gazebo reference="zed_left_camera">
-    <sensor type="camera" name="zed_left_camera">
-      <update_rate>30.0</update_rate>
-      <camera name="zed_left_camera">
-        <horizontal_fov>0.8709216071359963</horizontal_fov>
-        <image>
+          <format>B8G8R8</format>
           <width>640</width>
           <height>480</height>
-          <format>B8G8R8</format>
         </image>
         <clip>
-          <near>0.02</near>
-          <far>300</far>
+          <near>0.05</near>
+          <far>8.0</far>
         </clip>
-        <noise>
-          <type>gaussian</type>
-          <mean>0.0</mean>
-          <stddev>0.007</stddev>
-        </noise>
       </camera>
-      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+      <plugin name="kinect_camera_controller" filename="libgazebo_ros_openni_kinect.so">
+        <cameraName>camera</cameraName>
         <alwaysOn>true</alwaysOn>
-        <updateRate>30.0</updateRate>
-        <cameraName>/camera/left</cameraName>
-        <imageTopicName>image_raw_color</imageTopicName>
-        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
-        <frameName>zed_left_camera</frameName>
-        <hackBaseline>0</hackBaseline>
-        <distortionK1>0.0</distortionK1>
-        <distortionK2>0.0</distortionK2>
-        <distortionK3>0.0</distortionK3>
-        <distortionT1>0.0</distortionT1>
-        <distortionT2>0.0</distortionT2>
+        <updateRate>10</updateRate>
+        <imageTopicName>rgb/image_raw</imageTopicName>
+        <depthImageTopicName>depth/image_raw</depthImageTopicName>
+        <pointCloudTopicName>depth/points</pointCloudTopicName>
+        <cameraInfoTopicName>rgb/camera_info</cameraInfoTopicName>
+        <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>
+        <frameName>zed_depth</frameName>
+        <baseline>0.1</baseline>
+        <distortion_k1>0.0</distortion_k1>
+        <distortion_k2>0.0</distortion_k2>
+        <distortion_k3>0.0</distortion_k3>
+        <distortion_t1>0.0</distortion_t1>
+        <distortion_t2>0.0</distortion_t2>
+        <pointCloudCutoff>0.4</pointCloudCutoff>
       </plugin>
     </sensor>
-  </gazebo> -->
-  <!-- <gazebo reference="zed_right_camera">
-    <sensor type="camera" name="zed_right_camera">
-      <update_rate>30.0</update_rate>
-      <camera name="zed_right_camera">
-        <horizontal_fov>0.8709216071359963</horizontal_fov>
-        <image>
-          <width>640</width>
-          <height>480</height>
-          <format>B8G8R8</format>
-        </image>
-        <clip>
-          <near>0.02</near>
-          <far>300</far>
-        </clip>
-        <noise>
-          <type>gaussian</type>
-          <mean>0.0</mean>
-          <stddev>0.007</stddev>
-        </noise>
-      </camera>
-      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
-        <alwaysOn>true</alwaysOn>
-        <updateRate>30.0</updateRate>
-        <cameraName>/camera/right</cameraName>
-        <imageTopicName>image_raw_color</imageTopicName>
-        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
-        <frameName>zed_right_camera</frameName>
-        <hackBaseline>0</hackBaseline>
-        <distortionK1>0.0</distortionK1>
-        <distortionK2>0.0</distortionK2>
-        <distortionK3>0.0</distortionK3>
-        <distortionT1>0.0</distortionT1>
-        <distortionT2>0.0</distortionT2>
-      </plugin>
-    </sensor>
-  </gazebo> -->
+  </gazebo>
 
 </robot>
 
