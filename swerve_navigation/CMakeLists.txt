@@ -21,6 +21,6 @@ install(
 # Odom Publisher Node
 add_executable(odom_pub src/odom_pub.cpp)
 target_link_libraries(odom_pub ${catkin_LIBRARIES})
-add_dependencies(odom_pub [package_name]_generate_messages_cpp)
+# add_dependencies(odom_pub [package_name]_generate_messages_cpp)
 
 
