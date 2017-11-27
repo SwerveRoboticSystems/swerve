@@ -104,11 +104,11 @@
     <transmission name="${joint_name}_trans">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="${joint_name}">
-        <hardwareInterface>${hardware_interface}</hardwareInterface>
+        <hardwareInterface>hardware_interface/${hardware_interface}</hardwareInterface>
       </joint>
       <actuator name="${joint_name}_motor">
         <mechanicalReduction>${mechanical_reduction}</mechanicalReduction>
-        <hardwareInterface>${hardware_interface}</hardwareInterface>
+        <hardwareInterface>hardware_interface/${hardware_interface}</hardwareInterface>
       </actuator>
     </transmission>
   </xacro:macro>
@@ -124,11 +124,11 @@
     <transmission name="${joint_name}_trans">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="${joint_name}">
-        <hardwareInterface>${hardware_interface}</hardwareInterface>
+        <hardwareInterface>hardware_interface/${hardware_interface}</hardwareInterface>
       </joint>
       <actuator name="${joint_name}_motor">
         <mechanicalReduction>${mechanical_reduction}</mechanicalReduction>
-        <hardwareInterface>${hardware_interface}</hardwareInterface>
+        <hardwareInterface>hardware_interface/${hardware_interface}</hardwareInterface>
       </actuator>
     </transmission>
   </xacro:macro>

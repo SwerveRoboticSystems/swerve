@@ -34,10 +34,10 @@
   LIDAR
   -->
   <gazebo reference="laser">
-    <sensor type="gpu_ray" name="laser">
+    <sensor type="ray" name="laser">
       <always_on>true</always_on>
       <pose>0 0 0 0 0 0</pose>
-      <visualize>false</visualize>
+      <visualize>true</visualize>
       <update_rate>15</update_rate>
       <ray>
         <scan>
@@ -50,20 +50,16 @@
         </scan>
         <range>
           <min>0.10</min>
-          <max>20.0</max>
+          <max>10.0</max>
           <resolution>0.01</resolution>
         </range>
         <noise>
           <type>gaussian</type>
-          <!-- Noise parameters based on published spec for Hokuyo laser
-           achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
-           stddev of 0.01m will put 99.7% of samples within 0.03m of the true
-           reading. -->
            <mean>0.0</mean>
-           <stddev>0.01</stddev>
+           <stddev>0.00667</stddev>
          </noise>
        </ray>
-       <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_gpu_laser.so">
+       <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
         <topicName>scan</topicName>
         <frameName>laser</frameName>
       </plugin>
@@ -73,7 +69,7 @@
   <!--
   ZED CAMERA
   -->
-  <gazebo reference="zed_center">
+  <!--<gazebo reference="zed_center">
     <sensor type="multicamera" name="zed_camera">
       <update_rate>30.0</update_rate>
       <camera name="zed_left_camera">
@@ -163,7 +159,7 @@
         <pointCloudCutoff>0.4</pointCloudCutoff>
       </plugin>
     </sensor>
-  </gazebo>
+  </gazebo>-->
 
 </robot>
 

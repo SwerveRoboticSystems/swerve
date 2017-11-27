@@ -10,6 +10,7 @@
   <arg name="gazebo_viz" default="true"/> <!-- by default, load Gazebo visualization -->
   <arg name="rviz" default="true"/> <!-- by default, load RViz -->
   <arg name="move_robot" default="true"/> <!-- by default, move the robot -->
+  <arg name="gazebo_world" default="swerve"/> <!-- by default, load swerve world -->
 
 	<!--
     Include Other Launch Files
@@ -17,6 +18,7 @@
 	<include file="$(find swerve_gazebo)/launch/swerve_gazebo.launch"> <!-- load Swerve in Gazebo -->
 		<arg name="vel_control" value="true"/>
     <arg name="gazebo_viz" value="$(arg gazebo_viz)"/>
+    <arg name="gazebo_world" value="$(arg gazebo_world)"/>
 	</include>	
   <group if="$(arg rviz)">
 	  <include file="$(find swerve_description)/launch/display.launch"/> <!-- load Swerve in RViz -->
@@ -35,6 +37,8 @@
     		args="pub -l /swerve/joint_FW_vel_controller/command std_msgs/Float64 'data: 3.0'"/> <!-- move front wheel -->
     <node pkg="rostopic" type="rostopic" name="right_wheel_move" 
     		args="pub -l /swerve/joint_RW_vel_controller/command std_msgs/Float64 'data: 3.0'"/> <!-- move right wheel -->
+    <node pkg="rostopic" type="rostopic" name="left_wheel_move" 
+        args="pub -l /swerve/joint_LW_vel_controller/command std_msgs/Float64 'data: 3.0'"/> <!-- move right wheel -->
   </group>
 
 </launch>
