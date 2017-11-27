@@ -9,16 +9,13 @@
 
 <robot name="swerve" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <!-- Include constants and modeling macros -->
-  <xacro:include filename="$(find swerve_description)/urdf/swerve_utilities.xacro" />
-
   <xacro:macro name="swerve" params="parent name *origin hardware_interface">
 
     <!--
       DUMMY JOINT DEFINITION
     -->
     <joint name="${parent}_joint" type="fixed">
-      <insert_block name="origin" />
+      <xacro:insert_block name="origin" />
       <parent link="${parent}" />
       <child link="${name}_body" />
     </joint>
@@ -53,14 +50,14 @@
     <xacro:wheel_joint joint_name="${name}_joint_FW" parent="${name}_FS_link" child="${name}_FW_link" 
       hardware_interface="${hardware_interface}"/>
 
-      <link name="${name}_FW_link">
-        <inertial>
-          <origin xyz="-7.8185E-19 2.7756E-17 5.5511E-17" rpy="0 0 0" />
-          <mass value="${wheel_mass}" />
-          <inertia ixx="0.00016727" ixy="-4.9394E-22" ixz="-2.3462E-22" iyy="9.626E-05" iyz="-1.4682E-20" izz="9.626E-05" />
-        </inertial>
-        <xacro:insert_block name="wheel_visual_collision" />
-      </link>
+    <link name="${name}_FW_link">
+      <inertial>
+        <origin xyz="-7.8185E-19 2.7756E-17 5.5511E-17" rpy="0 0 0" />
+        <mass value="${wheel_mass}" />
+        <inertia ixx="0.00016727" ixy="-4.9394E-22" ixz="-2.3462E-22" iyy="9.626E-05" iyz="-1.4682E-20" izz="9.626E-05" />
+      </inertial>
+      <xacro:insert_block name="wheel_visual_collision" />
+    </link>
 
     <!--
       LEFT SWIVEL DEFINITION
@@ -80,14 +77,14 @@
     <xacro:wheel_joint joint_name="${name}_joint_LW" parent="${name}_LS_link" child="${name}_LW_link" 
       hardware_interface="${hardware_interface}"/>
 
-      <link name="${name}_LW_link">
-        <inertial>
-          <origin xyz="0 2.7756E-17 0" rpy="0 0 0" />
-          <mass value="${wheel_mass}" />
-          <inertia ixx="0.00016727" ixy="-1.3787E-22" ixz="-1.031E-22" iyy="9.626E-05" iyz="-3.3087E-21" izz="9.626E-05" />
-        </inertial>
-        <xacro:insert_block name="wheel_visual_collision" />
-      </link>
+    <link name="${name}_LW_link">
+      <inertial>
+        <origin xyz="0 2.7756E-17 0" rpy="0 0 0" />
+        <mass value="${wheel_mass}" />
+        <inertia ixx="0.00016727" ixy="-1.3787E-22" ixz="-1.031E-22" iyy="9.626E-05" iyz="-3.3087E-21" izz="9.626E-05" />
+      </inertial>
+      <xacro:insert_block name="wheel_visual_collision" />
+    </link>
 
     <!--
       RIGHT SWIVEL DEFINITION
@@ -107,19 +104,19 @@
     <xacro:wheel_joint joint_name="${name}_joint_RW" parent="${name}_RS_link" child="${name}_RW_link" 
       hardware_interface="${hardware_interface}"/>
 
-      <link name="${name}_RW_link">
-        <inertial>
-          <origin xyz="-5.5511E-17 2.7756E-17 -2.7756E-17" rpy="0 0 0" />
-          <mass value="${wheel_mass}" />
-          <inertia ixx="0.00016727" ixy="-1.3787E-22" ixz="-1.031E-22" iyy="9.626E-05" iyz="-3.3087E-21" izz="9.626E-05" />
-        </inertial>
-        <xacro:insert_block name="wheel_visual_collision" />
-      </link>
+    <link name="${name}_RW_link">
+      <inertial>
+        <origin xyz="-5.5511E-17 2.7756E-17 -2.7756E-17" rpy="0 0 0" />
+        <mass value="${wheel_mass}" />
+        <inertia ixx="0.00016727" ixy="-1.3787E-22" ixz="-1.031E-22" iyy="9.626E-05" iyz="-3.3087E-21" izz="9.626E-05" />
+      </inertial>
+      <xacro:insert_block name="wheel_visual_collision" />
+    </link>
 
     <!--
       SENSORS
     -->
-    <link name="laser">
+    <link name="${name}_laser">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
@@ -134,14 +131,14 @@
       </inertial> 
     </link>
 
-    <joint name="laser_joint" type="fixed">
-      <origin xyz="0 0.2 0.063" rpy="0 0 ${pi}" />
+    <joint name="${name}_laser_joint" type="fixed">
+      <origin xyz="0 0.2 0.063" rpy="0 0 ${pi/2}" />
       <parent link="${name}_body" />
-      <child link="laser" />
+      <child link="${name}_laser" />
     </joint>
 
     <!-- from Stereo Labs: https://goo.gl/UvqS36 -->
-    <link name="zed_center">
+    <link name="${name}_zed_center">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
@@ -154,18 +151,18 @@
     </link>
     <joint name="zed_camera_joint" type="fixed">
       <parent link="${name}_body"/>
-      <child link="zed_center"/>
-      <origin xyz="0 0.18 0.11" rpy="0 0 ${pi}" />
+      <child link="${name}_zed_center"/>
+      <origin xyz="0 0.18 0.11" rpy="0 0 ${pi/2}" />
     </joint>
 
-    <link name="zed_depth"></link>
-    <joint name="zed_depth_joint" type="fixed">
-      <parent link="zed_center"/>
-      <child link="zed_depth"/>
+    <link name="${name}_zed_depth"></link>
+    <joint name="${name}_zed_depth_joint" type="fixed">
+      <parent link="${name}_zed_center"/>
+      <child link="${name}_zed_depth"/>
       <origin xyz="0 0 0" rpy="${pi} 0 ${pi}" />
     </joint>
 
-    <link name="zed_left_camera">
+    <link name="${name}_zed_left_camera">
       <visual>
         <origin xyz="0 0 0" rpy="0 ${pi} 0"/>
         <geometry>
@@ -176,7 +173,7 @@
         </material>
       </visual>
     </link>
-    <link name="zed_right_camera">
+    <link name="${name}_zed_right_camera">
       <visual>
         <origin xyz="0 0 0" rpy="0 ${pi} 0"/>
         <geometry>
@@ -188,22 +185,22 @@
       </visual>
     </link>
 
-    <joint name="zed_left_camera_joint" type="fixed">
-      <parent link="zed_center"/>
-      <child link="zed_left_camera"/>
+    <joint name="${name}_zed_left_camera_joint" type="fixed">
+      <parent link="${name}_zed_center"/>
+      <child link="${name}_zed_left_camera"/>
       <origin xyz="0 0.06 0" rpy="0 0 0" />
     </joint>
-    <joint name="zed_right_camera_joint" type="fixed">
-      <parent link="zed_center"/>
-      <child link="zed_right_camera"/>
+    <joint name="${name}_zed_right_camera_joint" type="fixed">
+      <parent link="${name}_zed_center"/>
+      <child link="${name}_zed_right_camera"/>
       <origin xyz="0 -0.06 0" rpy="0 0 0" />
     </joint>
 
-    <link name="zed_depth_camera" />
+    <link name="${name}_zed_depth_camera" />
 
-    <joint name="zed_depth_camera_joint" type="fixed">
-      <parent link="zed_left_camera"/>
-      <child link="zed_depth_camera"/>
+    <joint name="${name}_zed_depth_camera_joint" type="fixed">
+      <parent link="${name}_zed_left_camera"/>
+      <child link="${name}_zed_depth_camera"/>
       <origin xyz="0 0 0" rpy="-1.5707963267948966 0 -1.5707963267948966" />
     </joint>
 

@@ -12,11 +12,13 @@
 
 	<!-- Load Robot Description -->
 	<group if="$(arg vel_control)">
-    <param name="robot_description" command="$(find xacro)/xacro.py '$(find swerve_description)/urdf/swerve.urdf.xacro' 
+    <param name="robot_description" command="$(find xacro)/xacro '--inorder' 
+        '$(find swerve_description)/urdf/swerve.urdf.xacro' 
         hardware_interface:=VelocityJointInterface"/>
   </group>
   <group unless="$(arg vel_control)">
-    <param name="robot_description" command="$(find xacro)/xacro.py '$(find swerve_description)/urdf/swerve.urdf.xacro' 
+    <param name="robot_description" command="$(find xacro)/xacro '--inorder' 
+        '$(find swerve_description)/urdf/swerve.urdf.xacro' 
         hardware_interface:=PositionJointInterface"/>
   </group>
 
