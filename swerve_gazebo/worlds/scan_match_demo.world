@@ -1,3 +1,11 @@
+<!--
+@file scan_match_demo.world
+@brief Gazebo world for testing MATLAB scan matching algoritms with Swerve
+@author Frederick Wachter - wachterfreddy@gmail.com
+@date Created: 2017-11-26
+-->
+
+<?xml version="1.0" ?>
 <sdf version='1.6'>
   <world name='default'>
     <model name='ground_plane'>
@@ -62,7 +70,7 @@
     </light>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose frame=''>51.7722 6.73085 34.5788 0 0.643643 2.94419</pose>
+        <pose frame=''>19.2937 -18.7019 31.9814 0 0.987643 1.74419</pose>
         <view_controller>orbit</view_controller>
         <projection_type>perspective</projection_type>
       </camera>
@@ -87,6 +95,408 @@
       <elevation>0</elevation>
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
+    <model name='House 1'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>model://house_1/meshes/house_1.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://house_1/meshes/house_1.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://house_1/materials/scripts</uri>
+              <uri>model://house_1/materials/textures</uri>
+              <name>House_1/Diffuse</name>
+            </script>
+            <shader type='normal_map_object_space'>
+              <normal_map>House_1_Normal.png</normal_map>
+            </shader>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose frame=''>6.32349 -7.58662 0 0 -0 0</pose>
+    </model>
+    <model name='House 2'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>model://house_2/meshes/house_2.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://house_2/meshes/house_2.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://house_2/materials/scripts</uri>
+              <uri>model://house_2/materials/textures</uri>
+              <name>House_2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose frame=''>15.3304 -8.84286 0 0 -0 0</pose>
+    </model>
+    <model name='House 3'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>model://house_3/meshes/house_3.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://house_3/meshes/house_3.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://house_3/materials/scripts</uri>
+              <uri>model://house_3/materials/textures</uri>
+              <name>House_3/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose frame=''>26.5548 -8.88395 0 0 -0 0</pose>
+    </model>
+    <model name='Gas Station'>
+      <static>1</static>
+      <link name='link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>model://gas_station/meshes/gas_station.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://gas_station/meshes/gas_station.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://gas_station/materials/scripts</uri>
+              <uri>model://gas_station/materials/textures</uri>
+              <name>GasStation/Diffuse</name>
+            </script>
+            <shader type='normal_map_object_space'>
+              <normal_map>GasStation_Normal.png</normal_map>
+            </shader>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose frame=''>4.2775 33.6828 0 0 -0 0</pose>
+    </model>
+    <state world_name='default'>
+      <sim_time>148 951000000</sim_time>
+      <real_time>96 804374735</real_time>
+      <wall_time>1511745043 585651789</wall_time>
+      <iterations>92219</iterations>
+      <model name='Construction Barrel'>
+        <pose frame=''>6.60772 8.39753 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>6.60772 8.39753 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='Construction Barrel_0'>
+        <pose frame=''>7.45565 7.08417 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>7.45565 7.08417 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='Construction Barrel_1'>
+        <pose frame=''>9.87829 6.25933 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>9.87829 6.25933 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='Construction Barrel_2'>
+        <pose frame=''>12.7483 6.32843 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>12.7483 6.32843 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='Construction Barrel_3'>
+        <pose frame=''>14.8378 6.30383 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>14.8378 6.30383 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='Construction Barrel_4'>
+        <pose frame=''>15.8728 8.23156 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>15.8728 8.23156 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='Construction Barrel_5'>
+        <pose frame=''>6.53629 10.797 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>6.53629 10.797 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='Construction Barrel_6'>
+        <pose frame=''>15.8328 10.3121 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>15.8328 10.3121 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='Gas Station'>
+        <pose frame=''>4.2775 33.6828 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>4.2775 33.6828 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='House 1'>
+        <pose frame=''>6.32349 -7.58662 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>6.32349 -7.58662 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='House 1_0'>
+        <pose frame=''>36.3209 -9.83359 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>36.3209 -9.83359 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='House 2'>
+        <pose frame=''>15.3304 -8.84286 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>15.3304 -8.84286 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='House 3'>
+        <pose frame=''>26.5548 -8.88395 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>26.5548 -8.88395 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='apartment'>
+        <pose frame=''>24.0246 22.0671 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>24.0246 22.0671 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ground_plane'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='law_office'>
+        <pose frame=''>37.4873 14.6607 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>37.4873 14.6607 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='swerve'>
+        <pose frame=''>-0.105653 -0.062265 0.001437 -5.3e-05 4.4e-05 0.310817</pose>
+        <scale>1 1 1</scale>
+        <link name='odom'>
+          <pose frame=''>-0.105653 -0.062265 0.001437 -5.3e-05 4.4e-05 0.310817</pose>
+          <velocity>0.044044 0.022032 -0.001665 -0.019805 -0.014026 -0.081521</velocity>
+          <acceleration>-6.12148 -0.843411 -1.28995 0.658536 1.31155 -2.25845</acceleration>
+          <wrench>-42.8883 -5.9091 -9.03765 0 -0 0</wrench>
+        </link>
+        <link name='swerve_FS_link'>
+          <pose frame=''>0.257089 0.054275 0.171422 1.57066 -6e-06 -1.7123</pose>
+          <velocity>0.048801 -0.004292 0.001584 -0.017753 0.023915 -0.106965</velocity>
+          <acceleration>-12.284 5.81531 5.71472 -2.05851 1.10851 -2.26254</acceleration>
+          <wrench>-5.51601 2.6113 2.56613 0 -0 0</wrench>
+        </link>
+        <link name='swerve_FW_link'>
+          <pose frame=''>0.257052 0.054296 0.044427 1.19824 0.001257 -1.71295</pose>
+          <velocity>0.035736 -0.004232 0.002576 0.07891 0.640289 -0.410318</velocity>
+          <acceleration>-25.5901 5.06629 6.37734 1.05918 -1.24122 -0.611654</acceleration>
+          <wrench>-3.84516 0.76126 0.958259 0 -0 0</wrench>
+        </link>
+        <link name='swerve_LS_link'>
+          <pose frame=''>-0.38793 0.193636 0.171429 1.57078 -5.1e-05 -1.30565</pose>
+          <velocity>0.062347 0.048298 -0.01086 -0.022346 -0.00874 -0.082152</velocity>
+          <acceleration>-9.17905 -6.1186 -7.67764 2.13904 -0.321322 0.373878</acceleration>
+          <wrench>-4.12175 -2.74749 -3.44756 0 -0 0</wrench>
+        </link>
+        <link name='swerve_LW_link'>
+          <pose frame=''>-0.387928 0.193631 0.04443 -1.51653 3.6e-05 -1.30562</pose>
+          <velocity>0.062927 0.045106 -0.011146 -1.6164 -0.507504 -0.089806</velocity>
+          <acceleration>-7.47479 -5.94952 -7.33052 -2.1752 0.194528 2.24538</acceleration>
+          <wrench>-1.12316 -0.893976 -1.10149 0 -0 0</wrench>
+        </link>
+        <link name='swerve_RS_link'>
+          <pose frame=''>-0.186115 -0.434678 0.171463 1.5708 -1.2e-05 -1.36089</pose>
+          <velocity>0.010512 0.033974 0.004582 -0.028339 -0.0169 -0.08417</velocity>
+          <acceleration>2.30876 0.734358 -0.793621 -3.01595 -0.432155 0.025714</acceleration>
+          <wrench>1.03672 0.329755 -0.356367 0 -0 0</wrench>
+        </link>
+        <link name='swerve_RW_link'>
+          <pose frame=''>-0.186131 -0.43471 0.044466 -0.3121 -0.001458 -1.36044</pose>
+          <velocity>0.0105 0.036753 0.004628 0.329979 0.25256 -0.059311</velocity>
+          <acceleration>3.34618 13.5957 -0.847154 1.71968 1.01135 -0.654008</acceleration>
+          <wrench>0.502797 2.04289 -0.127293 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose frame=''>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
     <model name='swerve'>
       <link name='odom'>
         <pose frame=''>0 0 0 0 -0 0</pose>
@@ -198,7 +608,7 @@
             </scan>
             <range>
               <min>0.1</min>
-              <max>20</max>
+              <max>10</max>
               <resolution>0.01</resolution>
             </range>
             <noise>
@@ -623,7 +1033,83 @@
       </plugin>
       <pose frame=''>0 0 0 0 -0 0</pose>
     </model>
-    <model name='House 1'>
+    <model name='apartment'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>model://apartment/meshes/apartment.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://apartment/meshes/apartment.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose frame=''>24.0246 22.0671 0 0 -0 0</pose>
+    </model>
+    <model name='law_office'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <pose frame=''>0 0 6.96244 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>6.84401 5.43165 13.9249</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://law_office/meshes/law_office.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose frame=''>37.4873 14.6607 0 0 -0 0</pose>
+    </model>
+    <model name='House 1_0'>
       <static>1</static>
       <link name='link'>
         <collision name='collision'>
@@ -669,15 +1155,27 @@
         <kinematic>0</kinematic>
         <gravity>1</gravity>
       </link>
-      <pose frame=''>6.32349 -7.58662 0 0 -0 0</pose>
+      <pose frame=''>36.3209 -9.83359 0 0 -0 0</pose>
     </model>
-    <model name='House 2'>
+    <model name='Construction Barrel'>
       <static>1</static>
       <link name='link'>
+        <inertial>
+          <pose frame=''>0 0 0.4 0 -0 0</pose>
+          <mass>500</mass>
+          <inertia>
+            <ixx>51.2096</ixx>
+            <iyy>51.2096</iyy>
+            <izz>25</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>model://house_2/meshes/house_2.dae</uri>
+              <uri>model://construction_barrel/meshes/construction_barrel.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -698,31 +1196,36 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>model://house_2/meshes/house_2.dae</uri>
+              <uri>model://construction_barrel/meshes/construction_barrel.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
-          <material>
-            <script>
-              <uri>model://house_2/materials/scripts</uri>
-              <uri>model://house_2/materials/textures</uri>
-              <name>House_2/Diffuse</name>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <kinematic>0</kinematic>
         <gravity>1</gravity>
       </link>
-      <pose frame=''>15.3304 -8.84286 0 0 -0 0</pose>
+      <pose frame=''>6.60772 8.39753 0 0 -0 0</pose>
     </model>
-    <model name='House 3'>
+    <model name='Construction Barrel_0'>
       <static>1</static>
       <link name='link'>
+        <inertial>
+          <pose frame=''>0 0 0.4 0 -0 0</pose>
+          <mass>500</mass>
+          <inertia>
+            <ixx>51.2096</ixx>
+            <iyy>51.2096</iyy>
+            <izz>25</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>model://house_3/meshes/house_3.dae</uri>
+              <uri>model://construction_barrel/meshes/construction_barrel.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -743,32 +1246,36 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>model://house_3/meshes/house_3.dae</uri>
+              <uri>model://construction_barrel/meshes/construction_barrel.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
-          <material>
-            <script>
-              <uri>model://house_3/materials/scripts</uri>
-              <uri>model://house_3/materials/textures</uri>
-              <name>House_3/Diffuse</name>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <kinematic>0</kinematic>
         <gravity>1</gravity>
       </link>
-      <pose frame=''>26.5548 -8.88395 0 0 -0 0</pose>
+      <pose frame=''>7.45565 7.08417 0 0 -0 0</pose>
     </model>
-    <model name='Gas Station'>
+    <model name='Construction Barrel_1'>
       <static>1</static>
       <link name='link'>
-        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0.4 0 -0 0</pose>
+          <mass>500</mass>
+          <inertia>
+            <ixx>51.2096</ixx>
+            <iyy>51.2096</iyy>
+            <izz>25</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>model://gas_station/meshes/gas_station.dae</uri>
+              <uri>model://construction_barrel/meshes/construction_barrel.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -789,131 +1296,266 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>model://gas_station/meshes/gas_station.dae</uri>
+              <uri>model://construction_barrel/meshes/construction_barrel.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
-          <material>
-            <script>
-              <uri>model://gas_station/materials/scripts</uri>
-              <uri>model://gas_station/materials/textures</uri>
-              <name>GasStation/Diffuse</name>
-            </script>
-            <shader type='normal_map_object_space'>
-              <normal_map>GasStation_Normal.png</normal_map>
-            </shader>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <kinematic>0</kinematic>
         <gravity>1</gravity>
       </link>
-      <pose frame=''>4.2775 33.6828 0 0 -0 0</pose>
+      <pose frame=''>9.87829 6.25933 0 0 -0 0</pose>
     </model>
-    <state world_name='default'>
-      <sim_time>56 732000000</sim_time>
-      <real_time>60 882712278</real_time>
-      <wall_time>1511738979 808609280</wall_time>
-      <iterations>56732</iterations>
-      <model name='Gas Station'>
-        <pose frame=''>4.2775 33.6828 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose frame=''>4.2775 33.6828 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='House 1'>
-        <pose frame=''>6.32349 -7.58662 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose frame=''>6.32349 -7.58662 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='House 2'>
-        <pose frame=''>15.3304 -8.84286 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose frame=''>15.3304 -8.84286 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='House 3'>
-        <pose frame=''>26.5548 -8.88395 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose frame=''>26.5548 -8.88395 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='ground_plane'>
-        <pose frame=''>0 0 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose frame=''>0 0 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='swerve'>
-        <pose frame=''>-0.004164 -0.00566 0.001353 -7.9e-05 -0.000205 -0.000638</pose>
-        <scale>1 1 1</scale>
-        <link name='odom'>
-          <pose frame=''>-0.004164 -0.00566 0.001353 -7.9e-05 -0.000205 -0.000638</pose>
-          <velocity>0.000412 -0.000504 -0.009475 0.000834 0.000233 -0.000453</velocity>
-          <acceleration>-0.021807 0.020609 -9.77114 -0.012594 -0.029297 0.043929</acceleration>
-          <wrench>-0.152782 0.144389 -68.4586 0 -0 0</wrench>
-        </link>
-        <link name='swerve_FS_link'>
-          <pose frame=''>0.376801 -0.005891 0.171431 1.571 -7.7e-05 -1.57022</pose>
-          <velocity>0.000483 -0.000785 -0.009674 0.000266 -0.000284 -0.000453</velocity>
-          <acceleration>0.049331 -0.060287 -9.89185 -1.06542 -0.227858 -0.545453</acceleration>
-          <wrench>0.022151 -0.027071 -4.44183 0 -0 0</wrench>
-        </link>
-        <link name='swerve_FW_link'>
-          <pose frame=''>0.376826 -0.005902 0.044432 1.30294 -5.5e-05 -1.57022</pose>
-          <velocity>0.000552 -0.000587 -0.009977 -0.005039 -0.000287 -0.000806</velocity>
-          <acceleration>0.213023 -0.125982 -10.2611 1.47224 0.612653 -1.20654</acceleration>
-          <wrench>0.032009 -0.01893 -1.54183 0 -0 0</wrench>
-        </link>
-        <link name='swerve_LS_link'>
-          <pose frame=''>-0.194487 0.324435 0.171288 1.571 -7.8e-05 -1.57405</pose>
-          <velocity>0.000598 -0.000495 -0.009283 0.000743 0.000353 -0.000453</velocity>
-          <acceleration>0.062423 -0.075675 -9.8029 -0.631752 -0.356319 -0.746239</acceleration>
-          <wrench>0.02803 -0.033981 -4.40188 0 -0 0</wrench>
-        </link>
-        <link name='swerve_LW_link'>
-          <pose frame=''>-0.194461 0.324425 0.04429 1.73612 -5.6e-05 -1.57405</pose>
-          <velocity>0.000589 -0.000268 -0.009612 -0.004829 0.000371 -0.001144</velocity>
-          <acceleration>0.240551 -0.162926 -9.85701 -2.87291 0.420965 -1.18014</acceleration>
-          <wrench>0.036145 -0.024481 -1.48111 0 -0 0</wrench>
-        </link>
-        <link name='swerve_RS_link'>
-          <pose frame=''>-0.194911 -0.335484 0.171339 1.571 -7.9e-05 -1.57297</pose>
-          <velocity>0.000331 -0.000583 -0.009668 0.000906 0.000303 -0.000453</velocity>
-          <acceleration>0.041295 -0.082986 -9.7076 0.437882 0.038311 0.230443</acceleration>
-          <wrench>0.018543 -0.037264 -4.35909 0 -0 0</wrench>
-        </link>
-        <link name='swerve_RW_link'>
-          <pose frame=''>-0.194885 -0.335495 0.044341 1.752 -4.5e-05 -1.57297</pose>
-          <velocity>0.000318 -0.000322 -0.010162 -0.007563 0.000321 -0.00077</velocity>
-          <acceleration>0.10584 -0.017711 -10.6206 2.98756 -0.828717 1.39173</acceleration>
-          <wrench>0.015904 -0.002661 -1.59585 0 -0 0</wrench>
-        </link>
-      </model>
-      <light name='sun'>
-        <pose frame=''>0 0 10 0 -0 0</pose>
-      </light>
-    </state>
+    <model name='Construction Barrel_2'>
+      <static>1</static>
+      <link name='link'>
+        <inertial>
+          <pose frame=''>0 0 0.4 0 -0 0</pose>
+          <mass>500</mass>
+          <inertia>
+            <ixx>51.2096</ixx>
+            <iyy>51.2096</iyy>
+            <izz>25</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>model://construction_barrel/meshes/construction_barrel.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://construction_barrel/meshes/construction_barrel.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose frame=''>12.7483 6.32843 0 0 -0 0</pose>
+    </model>
+    <model name='Construction Barrel_3'>
+      <static>1</static>
+      <link name='link'>
+        <inertial>
+          <pose frame=''>0 0 0.4 0 -0 0</pose>
+          <mass>500</mass>
+          <inertia>
+            <ixx>51.2096</ixx>
+            <iyy>51.2096</iyy>
+            <izz>25</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>model://construction_barrel/meshes/construction_barrel.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://construction_barrel/meshes/construction_barrel.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose frame=''>14.8378 6.30383 0 0 -0 0</pose>
+    </model>
+    <model name='Construction Barrel_4'>
+      <static>1</static>
+      <link name='link'>
+        <inertial>
+          <pose frame=''>0 0 0.4 0 -0 0</pose>
+          <mass>500</mass>
+          <inertia>
+            <ixx>51.2096</ixx>
+            <iyy>51.2096</iyy>
+            <izz>25</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>model://construction_barrel/meshes/construction_barrel.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://construction_barrel/meshes/construction_barrel.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose frame=''>15.8728 8.23156 0 0 -0 0</pose>
+    </model>
+    <model name='Construction Barrel_5'>
+      <static>1</static>
+      <link name='link'>
+        <inertial>
+          <pose frame=''>0 0 0.4 0 -0 0</pose>
+          <mass>500</mass>
+          <inertia>
+            <ixx>51.2096</ixx>
+            <iyy>51.2096</iyy>
+            <izz>25</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>model://construction_barrel/meshes/construction_barrel.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://construction_barrel/meshes/construction_barrel.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose frame=''>6.53629 10.797 0 0 -0 0</pose>
+    </model>
+    <model name='Construction Barrel_6'>
+      <static>1</static>
+      <link name='link'>
+        <inertial>
+          <pose frame=''>0 0 0.4 0 -0 0</pose>
+          <mass>500</mass>
+          <inertia>
+            <ixx>51.2096</ixx>
+            <iyy>51.2096</iyy>
+            <izz>25</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>model://construction_barrel/meshes/construction_barrel.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://construction_barrel/meshes/construction_barrel.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose frame=''>15.8328 10.3121 0 0 -0 0</pose>
+    </model>
   </world>
 </sdf>

@@ -11,17 +11,26 @@
   <arg name="rviz" default="true"/> <!-- by default, load RViz -->
   <arg name="move_robot" default="true"/> <!-- by default, move the robot -->
   <arg name="gazebo_world" default="swerve"/> <!-- by default, load swerve world -->
+  <arg name="ros_bag" default="false"/> <!-- by default, don't ros bag all topics -->
 
 	<!--
     Include Other Launch Files
   -->
+  <!-- Gazebo Launch -->
 	<include file="$(find swerve_gazebo)/launch/swerve_gazebo.launch"> <!-- load Swerve in Gazebo -->
 		<arg name="vel_control" value="true"/>
     <arg name="gazebo_viz" value="$(arg gazebo_viz)"/>
     <arg name="gazebo_world" value="$(arg gazebo_world)"/>
 	</include>	
+
+  <!-- RViz Launch -->
   <group if="$(arg rviz)">
 	  <include file="$(find swerve_description)/launch/display.launch"/> <!-- load Swerve in RViz -->
+  </group>
+
+  <!-- ROS Bag Launch -->
+  <group if="$(arg ros_bag)">
+    <include file="$(find swerve_utilities)/launch/ros_bag.launch"/>
   </group>
 
 	<!--

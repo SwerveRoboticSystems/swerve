@@ -33,3 +33,4 @@
 
 # ROS Files
 *.urdf
+*.bag

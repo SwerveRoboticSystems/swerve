@@ -1,0 +1,22 @@
+<!-- 
+@file ros_bag.launch
+@brief Creates a ROS bag of everything on ROS network
+@author Frederick Wachter - wachterfreddy@gmail.com
+@date Created: 2017-11-26
+-->
+
+<launch>
+
+  <arg name="custom_name" default="false"/> <!-- by default, don't use the custom name -->
+  <arg name="bag_name"/> <!-- used to store custom ROS bag name if desired -->
+
+	<group if="$(arg custom_name)">
+    <node pkg="rosbag" type="record" name="rosbag_all" args="-O $(find swerve_utilities)/bags/$(arg bag_name).bag -a"/>
+  </group>
+  <group unless="$(arg custom_name)">
+    <node pkg="swerve_utilities" type="ros_bag.sh" name="ros_bag" args="$(find swerve_utilities)"/>
+  </group>
+
+</launch>
+
+
