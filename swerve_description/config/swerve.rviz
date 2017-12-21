@@ -4,10 +4,12 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
+        - /TF1
         - /TF1/Frames1
         - /TF1/Tree1
+        - /ZED_Depth1/Status1
       Splitter Ratio: 0.582310021
-    Tree Height: 516
+    Tree Height: 871
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -52,37 +54,37 @@ Visualization Manager:
       Enabled: true
       Frame Timeout: 15
       Frames:
-        All Enabled: true
-        laser:
-          Value: true
+        All Enabled: false
         odom:
-          Value: true
+          Value: false
         swerve_FS_link:
-          Value: true
+          Value: false
         swerve_FW_link:
-          Value: true
+          Value: false
         swerve_LS_link:
-          Value: true
+          Value: false
         swerve_LW_link:
-          Value: true
+          Value: false
         swerve_RS_link:
-          Value: true
+          Value: false
         swerve_RW_link:
-          Value: true
+          Value: false
         swerve_body:
+          Value: false
+        swerve_laser:
+          Value: false
+        swerve_zed_center:
           Value: true
+        swerve_zed_depth:
+          Value: true
+        swerve_zed_depth_camera:
+          Value: false
+        swerve_zed_left_camera:
+          Value: false
+        swerve_zed_right_camera:
+          Value: false
         world:
-          Value: true
-        zed_center:
-          Value: true
-        zed_depth:
-          Value: true
-        zed_depth_camera:
-          Value: true
-        zed_left_camera:
-          Value: true
-        zed_right_camera:
-          Value: true
+          Value: false
       Marker Scale: 1
       Name: TF
       Show Arrows: true
@@ -92,8 +94,6 @@ Visualization Manager:
         world:
           odom:
             swerve_body:
-              laser:
-                {}
               swerve_FS_link:
                 swerve_FW_link:
                   {}
@@ -103,13 +103,15 @@ Visualization Manager:
               swerve_RS_link:
                 swerve_RW_link:
                   {}
-              zed_center:
-                zed_depth:
+              swerve_laser:
+                {}
+              swerve_zed_center:
+                swerve_zed_depth:
                   {}
-                zed_left_camera:
-                  zed_depth_camera:
+                swerve_zed_left_camera:
+                  swerve_zed_depth_camera:
                     {}
-                zed_right_camera:
+                swerve_zed_right_camera:
                   {}
       Update Interval: 0
       Value: true
@@ -123,11 +125,6 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        laser:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         odom:
           Alpha: 1
           Show Axes: false
@@ -167,25 +164,30 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        zed_center:
+        swerve_laser:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        zed_depth:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        zed_depth_camera:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        zed_left_camera:
+        swerve_zed_center:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        zed_right_camera:
+        swerve_zed_depth:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        swerve_zed_depth_camera:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        swerve_zed_left_camera:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        swerve_zed_right_camera:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -333,18 +335,18 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.645397961
+      Pitch: 0.264796793
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 3.83543968
+      Yaw: 3.28543973
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 1148
+  Height: 1748
   Hide Left Dock: false
   Hide Right Dock: true
-  QMainWindow State: 000000ff00000000fd00000004000000000000016a000003e2fc0200000011fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000006400fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000002800000245000000dd00fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000264000001b60000000000000000fb0000000c00430061006d0065007200610000000404000000160000000000000000fb0000000c00430061006d006500720061000000034b000000cf0000000000000000fb0000000a0049006d0061006700650000000377000000a30000000000000000fb0000000c00430061006d0065007200610100000321000000f90000000000000000fb0000000a0049006d006100670065010000034b000000cf0000000000000000fb0000000c00430061006d006500720061010000034b000000cf0000000000000000fb0000001e005a00450044005f00430061006d006500720061005f004c0065006600740100000273000000c90000001600fffffffb00000020005a00450044005f00430061006d006500720061005f005200690067006800740100000342000000c80000001600ffffff000000010000010f000002c4fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a005600690065007700730000000028000002c4000000b000fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000003a00000004efc0100000002fb0000000800540069006d00650100000000000003a00000030000fffffffb0000000800540069006d0065010000000000000450000000000000000000000230000003e200000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000004000000000000016a0000063afc0200000011fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000006400fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c0061007900730100000028000003a8000000dd00fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000264000001b60000000000000000fb0000000c00430061006d0065007200610000000404000000160000000000000000fb0000000c00430061006d006500720061000000034b000000cf0000000000000000fb0000000a0049006d0061006700650000000377000000a30000000000000000fb0000000c00430061006d0065007200610100000321000000f90000000000000000fb0000000a0049006d006100670065010000034b000000cf0000000000000000fb0000000c00430061006d006500720061010000034b000000cf0000000000000000fb0000001e005a00450044005f00430061006d006500720061005f004c00650066007401000003d6000001440000001600fffffffb00000020005a00450044005f00430061006d006500720061005f005200690067006800740100000520000001420000001600ffffff000000010000010f000002c4fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a005600690065007700730000000028000002c4000000b000fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000005800000004efc0100000002fb0000000800540069006d00650100000000000005800000030000fffffffb0000000800540069006d00650100000000000004500000000000000000000004100000063a00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
@@ -353,8 +355,8 @@ Window Geometry:
     collapsed: false
   Views:
     collapsed: true
-  Width: 928
-  X: 992
+  Width: 1408
+  X: 1472
   Y: 24
   ZED_Camera_Left:
     collapsed: false

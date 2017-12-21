@@ -8,18 +8,19 @@
 <launch>
 
 	<!-- ROS arguments -->
+  <arg name="robot_name" default="swerve"/>
 	<arg name="vel_control" default="true"/>
 
 	<!-- Load Robot Description -->
 	<group if="$(arg vel_control)">
     <param name="robot_description" command="$(find xacro)/xacro '--inorder' 
         '$(find swerve_description)/urdf/swerve.urdf.xacro' 
-        hardware_interface:=VelocityJointInterface"/>
+        hardware_interface:=VelocityJointInterface robot_name:=$(arg robot_name)"/>
   </group>
   <group unless="$(arg vel_control)">
     <param name="robot_description" command="$(find xacro)/xacro '--inorder' 
         '$(find swerve_description)/urdf/swerve.urdf.xacro' 
-        hardware_interface:=PositionJointInterface"/>
+        hardware_interface:=PositionJointInterface robot_name:=$(arg robot_name)"/>
   </group>
 
 </launch>

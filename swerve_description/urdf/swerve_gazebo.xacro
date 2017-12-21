@@ -38,7 +38,7 @@
       <sensor type="ray" name="${name}_laser">
         <always_on>true</always_on>
         <pose>0 0 0 0 0 0</pose>
-        <visualize>true</visualize>
+        <visualize>false</visualize>
         <update_rate>15</update_rate>
         <ray>
           <scan>
@@ -70,7 +70,7 @@
     <!--
     ZED CAMERA
     -->
-    <!--<gazebo reference="${name}_zed_center">
+    <gazebo reference="${name}_zed_center">
       <sensor type="multicamera" name="${name}_zed_camera">
         <update_rate>100.0</update_rate>
         <camera name="${name}_zed_left_camera">
@@ -132,9 +132,9 @@
         <camera>
           <horizontal_fov>1.91986</horizontal_fov>
           <image>
-            <format>B8G8R8</format>
-            <width>640</width>
-            <height>480</height>
+            <width>2208</width>
+            <height>1242</height>
+            <format>R8G8B8</format>
           </image>
           <clip>
             <near>0.5</near>
@@ -144,7 +144,7 @@
         <plugin name="${name}_kinect_camera_controller" filename="libgazebo_ros_openni_kinect.so">
           <cameraName>camera</cameraName>
           <alwaysOn>true</alwaysOn>
-          <updateRate>10</updateRate>
+          <updateRate>10.0</updateRate>
           <imageTopicName>rgb/image_raw</imageTopicName>
           <depthImageTopicName>depth/image_raw</depthImageTopicName>
           <pointCloudTopicName>depth/points</pointCloudTopicName>
@@ -160,7 +160,7 @@
           <pointCloudCutoff>0.4</pointCloudCutoff>
         </plugin>
       </sensor>
-    </gazebo>-->
+    </gazebo>
 
   </xacro:macro>
 

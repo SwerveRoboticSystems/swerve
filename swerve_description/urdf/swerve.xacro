@@ -159,7 +159,7 @@
     <joint name="${name}_zed_depth_joint" type="fixed">
       <parent link="${name}_zed_center"/>
       <child link="${name}_zed_depth"/>
-      <origin xyz="0 0 0" rpy="${pi} 0 ${pi}" />
+      <origin xyz="0 0 0" rpy="0 ${pi/2} 0" />
     </joint>
 
     <link name="${name}_zed_left_camera">
