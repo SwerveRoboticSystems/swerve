@@ -1,0 +1,47 @@
+<!--
+@file swerve_control.launch
+@brief Start ROS control for ROS Gazebo interface
+@author Frederick Wachter - wachterfreddy@gmail.com
+@date Created: 2017-11-08
+-->
+
+<launch>
+
+  <!--
+    Arguments
+  -->
+  <arg name="vel_control" default="true"/> <!-- by default, load the position joint controllers -->
+  <arg name="shutdown_timeout" default="1"/> <!-- by default, will wait 1 second to shutdown controller manager -->
+
+  <!--
+    Load ROS Parameters
+  -->
+  <!-- Load joint controller configurations -->
+  <rosparam file="$(find swerve_control)/config/swerve_control.yaml" command="load"/>
+
+  <!--
+    Run ROS Nodes
+  -->
+  <!-- load the controllers -->
+  <group if="$(arg vel_control)">
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+        output="screen" ns="/swerve" args="joint_state_controller joint_FS_vel_controller joint_FW_vel_controller 
+        joint_LS_vel_controller joint_LW_vel_controller joint_RS_vel_controller joint_RW_vel_controller
+        --shutdown-timeout=$(arg shutdown_timeout)"/>
+  </group>
+  <group unless="$(arg vel_control)">
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+        output="screen" ns="/swerve" args="joint_state_controller joint_FS_pos_controller joint_FW_pos_controller 
+        joint_LS_pos_controller joint_LW_pos_controller joint_RS_pos_controller joint_RW_pos_controller
+        --shutdown-timeout=$(arg shutdown_timeout)"/>
+  </group>
+
+  <!-- Run robot state publisher -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" 
+      respawn="false" output="screen">
+    <remap from="/joint_states" to="/swerve/joint_states"/>
+  </node>
+
+</launch>
+
+

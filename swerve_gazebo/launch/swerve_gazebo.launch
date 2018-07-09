@@ -1,0 +1,57 @@
+<!--
+@file swerve_gazebo.launch
+@brief Bring Swerve into Gazebo
+@author Frederick Wachter - wachterfreddy@gmail.com
+@date Created: 2017-11-05
+-->
+
+<launch>
+
+  <!--
+    Arguments
+  -->
+  <!-- ROS arguments -->
+  <arg name="vel_control" default="true"/>
+
+  <!-- Gazebo arguments -->
+  <arg name="world" default="empty"/> 
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gazebo_viz" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+  <arg name="gazebo_world" default="swerve"/>
+  
+  <!--
+    Load Gazebo
+  -->
+  <!-- Load Gazebo -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find swerve_gazebo)/worlds/$(arg gazebo_world).world"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="gui" value="$(arg gazebo_viz)"/>
+    <arg name="headless" value="$(arg headless)"/>
+    <arg name="debug" value="$(arg debug)"/>
+  </include>
+
+  <!--
+    Run ROS Nodes
+  -->
+  <!-- Load robot description and controllers -->
+  <include file="$(find swerve_description)/launch/load_description.launch">
+    <arg name="vel_control" value="$(arg vel_control)"/>
+  </include>
+
+  <!-- Load controllers -->
+  <include file="$(find swerve_control)/launch/swerve_control.launch"> <!-- load Swerve in RViz -->
+    <arg name="vel_control" value="$(arg vel_control)"/>
+  </include>
+
+  <!-- Run Gazebo ROS node -->
+  <node pkg="gazebo_ros" type="spawn_model" name="swerve_spawn" output="screen" 
+      args="-urdf -param robot_description -model swerve"/>
+
+</launch>
+
+

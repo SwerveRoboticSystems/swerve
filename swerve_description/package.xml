@@ -1,0 +1,21 @@
+<package format="2">
+	
+  <name>swerve_description</name>
+  <version>0.0.1</version>
+  <description>The Swerve desciption package</description>
+
+  <maintainer email="wachterfreddy@gmail.com">Frederick Wachter</maintainer>
+  <author email="wachterfreddy@gmail.com">Frederick Wachter</author>
+
+  <license>MIT</license>
+
+  <url type="repository">https://github.com/SwerveRoboticSystems/swerve</url>
+  <url type="bugtracker">https://github.com/SwerveRoboticSystems/swerve/issues</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  
+  <depend>xacro</depend>
+
+</package>
+
+

@@ -1,0 +1,28 @@
+<!-- 
+@file load_description.launch
+@brief Loads robot description to ROS parameter server
+@author Frederick Wachter - wachterfreddy@gmail.com
+@date Created: 2017-11-05
+-->
+
+<launch>
+
+	<!-- ROS arguments -->
+  <arg name="robot_name" default="swerve"/>
+	<arg name="vel_control" default="true"/>
+
+	<!-- Load Robot Description -->
+	<group if="$(arg vel_control)">
+    <param name="robot_description" command="$(find xacro)/xacro '--inorder' 
+        '$(find swerve_description)/urdf/swerve.urdf.xacro' 
+        hardware_interface:=VelocityJointInterface robot_name:=$(arg robot_name)"/>
+  </group>
+  <group unless="$(arg vel_control)">
+    <param name="robot_description" command="$(find xacro)/xacro '--inorder' 
+        '$(find swerve_description)/urdf/swerve.urdf.xacro' 
+        hardware_interface:=PositionJointInterface robot_name:=$(arg robot_name)"/>
+  </group>
+
+</launch>
+
+

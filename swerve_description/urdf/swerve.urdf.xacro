@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+
+<!--
+@file swerve.urdf.xacro
+@brief Main xacro file for Swerve robot
+@author Frederick Wachter - wachterfreddy@gmail.com
+@date Created: 2017-11-05
+-->
+
+<robot name="swerve" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!--
+    FIXED FRAME DEFINITION
+  -->
+
+  <!-- Fixed swerve dummy frame -->
+  <link name="odom" />
+
+
+  <!-- 
+    IMPORTS 
+  -->
+
+  <!-- Import constants and modeling macros -->
+  <xacro:include filename="$(find swerve_description)/urdf/swerve_utilities.xacro"/>
+
+  <!-- Import Gazebo tags -->
+  <xacro:include filename="$(find swerve_description)/urdf/swerve_gazebo.xacro"/>
+
+  <!-- Import swerve robot -->
+  <xacro:include filename="$(find swerve_description)/urdf/swerve.xacro"/>
+
+
+  <!--
+    MACRO DEFINITIONS
+  -->
+
+  <!-- Define macros for swerve import -->
+  <xacro:swerve name="$(arg robot_name)" parent="odom" hardware_interface="$(arg hardware_interface)">
+	  <origin xyz="0 0 0.17" rpy="0 0 -${pi/2}"/> <!-- rotate 90 degrees due to error in black box model -->
+  </xacro:swerve>
+
+  <xacro:swerve_sensors name="swerve"/>
+
+</robot>
+
+
+

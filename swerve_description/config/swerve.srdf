@@ -1,0 +1,72 @@
+<?xml version="1.0" ?>
+
+<!-- 
+SRDF for the Swerve robot
+Author: Frederick Wachter - wachterfreddy@gmail.com
+Created: 2017-07-15
+-->
+
+<robot name="swerve">
+
+  <virtual_joint name="world_joint" type="planar" parent_frame="world" child_link="odom" />
+  
+  <group name="swerve">
+    <joint name="swerve_base_joint" />
+  </group>
+
+  <group name="front_drive">
+    <joint name="swerve_base_joint" />
+    <joint name="swerve_joint_FS" />
+    <joint name="swerve_joint_FW" />
+  </group>
+
+  <group name="left_drive">
+    <joint name="swerve_base_joint" />
+    <joint name="swerve_joint_LS" />
+    <joint name="swerve_joint_LW" />
+  </group>
+
+  <group name="right_drive">
+    <joint name="swerve_base_joint" />
+    <joint name="swerve_joint_RS" />
+    <joint name="swerve_joint_RW" />
+  </group>
+
+  <end_effector name="front_end_effector" parent_link="swerve_FW_link" group="front_drive" />
+  <end_effector name="left_end_effector" parent_link="swerve_LW_link" group="left_drive" />
+  <end_effector name="right_end_effector" parent_link="swerve_RW_link" group="right_drive" />
+  <end_effector name="swerve_end_effector" parent_link="swerve_body" group="swerve" />
+
+  <disable_collisions link1="swerve_FW_link" link2="swerve_FS_link" reason="Adjacent" />
+  <disable_collisions link1="swerve_LW_link" link2="swerve_LS_link" reason="Adjacent" />
+  <disable_collisions link1="swerve_RW_link" link2="swerve_RS_link" reason="Adjacent" />
+  <disable_collisions link1="swerve_FS_link" link2="swerve_body" reason="Adjacent" />
+  <disable_collisions link1="swerve_LS_link" link2="swerve_body" reason="Adjacent" />
+  <disable_collisions link1="swerve_RS_link" link2="swerve_body" reason="Adjacent" />
+  <disable_collisions link1="swerve_body" link2="odom" reason="Adjacent" />
+
+  <disable_collisions link1="swerve_FW_link" link2="odom" reason="Never" />
+  <disable_collisions link1="swerve_LW_link" link2="odom" reason="Never" />
+  <disable_collisions link1="swerve_RW_link" link2="odom" reason="Never" />
+  <disable_collisions link1="swerve_FS_link" link2="odom" reason="Never" />
+  <disable_collisions link1="swerve_LS_link" link2="odom" reason="Never" />
+  <disable_collisions link1="swerve_RS_link" link2="odom" reason="Never" />
+
+  <disable_collisions link1="swerve_FW_link" link2="swerve_body" reason="Never" />
+  <disable_collisions link1="swerve_LW_link" link2="swerve_body" reason="Never" />
+  <disable_collisions link1="swerve_RW_link" link2="swerve_body" reason="Never" />
+
+  <disable_collisions link1="swerve_FW_link" link2="swerve_LW_link" reason="Never" />
+  <disable_collisions link1="swerve_FW_link" link2="swerve_LS_link" reason="Never" />
+  <disable_collisions link1="swerve_FW_link" link2="swerve_RW_link" reason="Never" />
+  <disable_collisions link1="swerve_FW_link" link2="swerve_RS_link" reason="Never" />
+  <disable_collisions link1="swerve_LW_link" link2="swerve_FW_link" reason="Never" />
+  <disable_collisions link1="swerve_LW_link" link2="swerve_FS_link" reason="Never" />
+  <disable_collisions link1="swerve_LW_link" link2="swerve_RW_link" reason="Never" />
+  <disable_collisions link1="swerve_LW_link" link2="swerve_RS_link" reason="Never" />
+  <disable_collisions link1="swerve_RW_link" link2="swerve_FW_link" reason="Never" />
+  <disable_collisions link1="swerve_RW_link" link2="swerve_FS_link" reason="Never" />
+  <disable_collisions link1="swerve_RW_link" link2="swerve_LW_link" reason="Never" />
+  <disable_collisions link1="swerve_RW_link" link2="swerve_LS_link" reason="Never" />
+
+</robot>

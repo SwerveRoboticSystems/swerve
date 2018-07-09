@@ -1,0 +1,6 @@
+<package>
+  <description brief="swerve_description">swerve_description</description>
+  <depend package="gazebo" />
+  <author>Frederick Wachter</author>
+  <license>MIT</license>
+</package>

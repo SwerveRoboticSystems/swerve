@@ -1,0 +1,364 @@
+Panels:
+  - Class: rviz/Displays
+    Help Height: 0
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /TF1
+        - /TF1/Frames1
+        - /TF1/Tree1
+        - /ZED_Depth1/Status1
+      Splitter Ratio: 0.582310021
+    Tree Height: 871
+  - Class: rviz/Selection
+    Name: Selection
+  - Class: rviz/Tool Properties
+    Expanded:
+      - /2D Pose Estimate1
+      - /2D Nav Goal1
+      - /Publish Point1
+    Name: Tool Properties
+    Splitter Ratio: 0.588679016
+  - Class: rviz/Views
+    Expanded:
+      - /Current View1
+    Name: Views
+    Splitter Ratio: 0.5
+  - Class: rviz/Time
+    Experimental: false
+    Name: Time
+    SyncMode: 0
+    SyncSource: SICK_TiM561
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Alpha: 0.5
+      Cell Size: 1
+      Class: rviz/Grid
+      Color: 160; 160; 164
+      Enabled: true
+      Line Style:
+        Line Width: 0.0299999993
+        Value: Lines
+      Name: Grid
+      Normal Cell Count: 0
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Plane: XY
+      Plane Cell Count: 10
+      Reference Frame: world
+      Value: true
+    - Class: rviz/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: false
+        odom:
+          Value: false
+        swerve_FS_link:
+          Value: false
+        swerve_FW_link:
+          Value: false
+        swerve_LS_link:
+          Value: false
+        swerve_LW_link:
+          Value: false
+        swerve_RS_link:
+          Value: false
+        swerve_RW_link:
+          Value: false
+        swerve_body:
+          Value: false
+        swerve_laser:
+          Value: false
+        swerve_zed_center:
+          Value: true
+        swerve_zed_depth:
+          Value: true
+        swerve_zed_depth_camera:
+          Value: false
+        swerve_zed_left_camera:
+          Value: false
+        swerve_zed_right_camera:
+          Value: false
+        world:
+          Value: false
+      Marker Scale: 1
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: false
+      Tree:
+        world:
+          odom:
+            swerve_body:
+              swerve_FS_link:
+                swerve_FW_link:
+                  {}
+              swerve_LS_link:
+                swerve_LW_link:
+                  {}
+              swerve_RS_link:
+                swerve_RW_link:
+                  {}
+              swerve_laser:
+                {}
+              swerve_zed_center:
+                swerve_zed_depth:
+                  {}
+                swerve_zed_left_camera:
+                  swerve_zed_depth_camera:
+                    {}
+                swerve_zed_right_camera:
+                  {}
+      Update Interval: 0
+      Value: true
+    - Alpha: 1
+      Class: rviz/RobotModel
+      Collision Enabled: false
+      Enabled: true
+      Links:
+        All Links Enabled: true
+        Expand Joint Details: false
+        Expand Link Details: false
+        Expand Tree: false
+        Link Tree Style: Links in Alphabetic Order
+        odom:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        swerve_FS_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        swerve_FW_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        swerve_LS_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        swerve_LW_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        swerve_RS_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        swerve_RW_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        swerve_body:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        swerve_laser:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        swerve_zed_center:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        swerve_zed_depth:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        swerve_zed_depth_camera:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        swerve_zed_left_camera:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        swerve_zed_right_camera:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+      Name: RobotModel
+      Robot Description: robot_description
+      TF Prefix: ""
+      Update Interval: 0
+      Value: true
+      Visual Enabled: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/LaserScan
+      Color: 255; 255; 255
+      Color Transformer: Intensity
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: -999999
+      Min Color: 0; 0; 0
+      Min Intensity: 999999
+      Name: SICK_TiM561
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.100000001
+      Style: Spheres
+      Topic: /scan
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
+    - Class: rviz/Camera
+      Enabled: true
+      Image Rendering: background and overlay
+      Image Topic: /camera/right/image_raw
+      Name: ZED_Camera_Left
+      Overlay Alpha: 0.5
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: true
+      Visibility:
+        Grid: true
+        RobotModel: true
+        SICK_TiM561: true
+        TF: true
+        Value: false
+        ZED_Camera_Right: true
+        ZED_Depth: true
+      Zoom Factor: 1
+    - Class: rviz/Camera
+      Enabled: true
+      Image Rendering: background and overlay
+      Image Topic: /camera/left/image_raw
+      Name: ZED_Camera_Right
+      Overlay Alpha: 0.5
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: true
+      Visibility:
+        Grid: true
+        RobotModel: true
+        SICK_TiM561: true
+        TF: true
+        Value: false
+        ZED_Camera_Left: true
+        ZED_Depth: true
+      Zoom Factor: 1
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: RGB8
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: ZED_Depth
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.00999999978
+      Style: Flat Squares
+      Topic: /camera/depth/points
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
+  Enabled: true
+  Global Options:
+    Background Color: 48; 48; 48
+    Fixed Frame: world
+    Frame Rate: 30
+  Name: root
+  Tools:
+    - Class: rviz/Interact
+      Hide Inactive Objects: true
+    - Class: rviz/MoveCamera
+    - Class: rviz/Select
+    - Class: rviz/FocusCamera
+    - Class: rviz/Measure
+    - Class: rviz/SetInitialPose
+      Topic: /initialpose
+    - Class: rviz/SetGoal
+      Topic: /move_base_simple/goal
+    - Class: rviz/PublishPoint
+      Single click: true
+      Topic: /clicked_point
+  Value: true
+  Views:
+    Current:
+      Class: rviz/Orbit
+      Distance: 9.19706154
+      Enable Stereo Rendering:
+        Stereo Eye Separation: 0.0599999987
+        Stereo Focal Distance: 1
+        Swap Stereo Eyes: false
+        Value: false
+      Focal Point:
+        X: 0.0479767993
+        Y: -0.0825717002
+        Z: 0.0092724897
+      Focal Shape Fixed Size: true
+      Focal Shape Size: 0.0500000007
+      Invert Z Axis: false
+      Name: Current View
+      Near Clip Distance: 0.00999999978
+      Pitch: 0.264796793
+      Target Frame: <Fixed Frame>
+      Value: Orbit (rviz)
+      Yaw: 3.28543973
+    Saved: ~
+Window Geometry:
+  Displays:
+    collapsed: false
+  Height: 1748
+  Hide Left Dock: false
+  Hide Right Dock: true
+  QMainWindow State: 000000ff00000000fd00000004000000000000016a0000063afc0200000011fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000006400fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c0061007900730100000028000003a8000000dd00fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000264000001b60000000000000000fb0000000c00430061006d0065007200610000000404000000160000000000000000fb0000000c00430061006d006500720061000000034b000000cf0000000000000000fb0000000a0049006d0061006700650000000377000000a30000000000000000fb0000000c00430061006d0065007200610100000321000000f90000000000000000fb0000000a0049006d006100670065010000034b000000cf0000000000000000fb0000000c00430061006d006500720061010000034b000000cf0000000000000000fb0000001e005a00450044005f00430061006d006500720061005f004c00650066007401000003d6000001440000001600fffffffb00000020005a00450044005f00430061006d006500720061005f005200690067006800740100000520000001420000001600ffffff000000010000010f000002c4fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a005600690065007700730000000028000002c4000000b000fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000005800000004efc0100000002fb0000000800540069006d00650100000000000005800000030000fffffffb0000000800540069006d00650100000000000004500000000000000000000004100000063a00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  Selection:
+    collapsed: false
+  Time:
+    collapsed: false
+  Tool Properties:
+    collapsed: false
+  Views:
+    collapsed: true
+  Width: 1408
+  X: 1472
+  Y: 24
+  ZED_Camera_Left:
+    collapsed: false
+  ZED_Camera_Right:
+    collapsed: false
